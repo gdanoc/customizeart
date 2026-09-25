@@ -43,5 +43,5 @@ MySQL, base de datos `customizeart`, administrada con phpMyAdmin.
 * Rodrigo Andrés Guerra Romero
 * Gerardo Daniel Orellana Campos
 
-Proyecto Técnico Científico 2024 — Colegio Salesiano Santa Cecilia.
+Proyecto realizado en 2024.
 
