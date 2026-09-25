@@ -1,0 +1,2876 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C165C189-9551-4BE4-AEAD-9B1821996067}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CustomizeArt</RootNamespace>
+    <AssemblyName>CustomizeArt</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44364</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\MySql.Data.DLL</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalAdaptivePaymentsSDK, Version=2.15.117.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPalAdaptivePaymentsSDK.2.15.117\lib\net20\PayPalAdaptivePaymentsSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalCoreSDK, Version=1.7.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPalCoreSDK.1.7.1\lib\net451\PayPalCoreSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalHttp-Dotnet, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPalHttp.1.0.1\lib\netstandard2.0\PayPalHttp-Dotnet.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="01_ES_Login.aspx" />
+    <Content Include="01_Login.aspx" />
+    <Content Include="02_ES_Products.aspx" />
+    <Content Include="03_ES_Clothes.aspx" />
+    <Content Include="04_ES_Accesories.aspx" />
+    <Content Include="05_ES_Technology.aspx" />
+    <Content Include="06_ES_Addtocart.aspx" />
+    <Content Include="07_ES_Shoppingcart.aspx" />
+    <Content Include="08_ES_prueba.aspx" />
+    <Content Include="09_ES_About_Us.aspx" />
+    <Content Include="10_ES_forgotpassword.aspx" />
+    <Content Include="11_ES_Token.aspx" />
+    <Content Include="12_ES_Changepassword.aspx" />
+    <Content Include="13_Account.aspx" />
+    <Content Include="02_Products.aspx" />
+    <Content Include="03_Clothes.aspx" />
+    <Content Include="04_Accesories.aspx" />
+    <Content Include="05_Technology.aspx" />
+    <Content Include="06_Addtocart.aspx" />
+    <Content Include="07_Shoppingcart.aspx" />
+    <Content Include="08_prueba.aspx" />
+    <Content Include="09_About_Us.aspx" />
+    <Content Include="10_forgotpassword.aspx" />
+    <Content Include="11_Token.aspx" />
+    <Content Include="12_Changepassword.aspx" />
+    <Content Include="13_ES_Account.aspx" />
+    <Content Include="14_Deletefromcart.aspx" />
+    <Content Include="14_ES_Deletefromcart.aspx" />
+    <Content Include="21_Crud.aspx" />
+    <Content Include="21_ES_Crud.aspx" />
+    <Content Include="22_Crud_Products.aspx" />
+    <Content Include="22_ES_Crud_Products.aspx" />
+    <Content Include="23_Create.aspx" />
+    <Content Include="23_ES_Create.aspx" />
+    <Content Include="24_ES_Update.aspx" />
+    <Content Include="24_Update.aspx" />
+    <Content Include="25_Delete.aspx" />
+    <Content Include="25_ES_Delete.aspx" />
+    <Content Include="26_Add_image.aspx" />
+    <Content Include="26_ES_Add_image.aspx" />
+    <Content Include="27_Addimage_Default.aspx" />
+    <Content Include="27_ES_Addimage_Default.aspx" />
+    <Content Include="28_ES_Sales.aspx" />
+    <Content Include="28_Sales.aspx" />
+    <Content Include="29_ES_Sellerview.aspx" />
+    <Content Include="29_Sellerview.aspx" />
+    <Content Include="30_ES_Update_seller.aspx" />
+    <Content Include="30_Update_seller.aspx" />
+    <Content Include="31_ES_Salesseller.aspx" />
+    <Content Include="31_Salesseller.aspx" />
+    <Content Include="32_ES_Update_image.aspx" />
+    <Content Include="32_Update_image.aspx" />
+    <Content Include="33_CheckOut.aspx" />
+    <Content Include="33_ES_CheckOut.aspx" />
+    <Content Include="34_ES_Token-Compra.aspx" />
+    <Content Include="34_Token-Compra.aspx" />
+    <Content Include="35_deletefromcart.aspx" />
+    <Content Include="35_ES_deletefromcart.aspx" />
+    <Content Include="36_complete.aspx" />
+    <Content Include="36_ES_complete.aspx" />
+    <Content Include="37_ES_Sellers.aspx" />
+    <Content Include="37_Sellers.aspx" />
+    <Content Include="38_ES_seller_create.aspx" />
+    <Content Include="38_seller_create.aspx" />
+    <Content Include="39_ES_Sales_register.aspx" />
+    <Content Include="39_Sales_register.aspx" />
+    <Content Include="40_Create_Seller.aspx" />
+    <Content Include="40_ES_Create_Seller.aspx" />
+    <Content Include="41_customize_clothes.aspx" />
+    <Content Include="41_ES_customize_clothes.aspx" />
+    <Content Include="42_customize_technology.aspx" />
+    <Content Include="42_ES_customize_technology.aspx" />
+    <Content Include="43_customize_accesories.aspx" />
+    <Content Include="43_ES_customize_accesories.aspx" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\demos\demo-10.css" />
+    <Content Include="assets\css\demos\demo-11.css" />
+    <Content Include="assets\css\demos\demo-12.css" />
+    <Content Include="assets\css\demos\demo-13.css" />
+    <Content Include="assets\css\demos\demo-14.css" />
+    <Content Include="assets\css\demos\demo-15.css" />
+    <Content Include="assets\css\demos\demo-16.css" />
+    <Content Include="assets\css\demos\demo-17.css" />
+    <Content Include="assets\css\demos\demo-18.css" />
+    <Content Include="assets\css\demos\demo-19.css" />
+    <Content Include="assets\css\demos\demo-2.css" />
+    <Content Include="assets\css\demos\demo-20.css" />
+    <Content Include="assets\css\demos\demo-21.css" />
+    <Content Include="assets\css\demos\demo-22.css" />
+    <Content Include="assets\css\demos\demo-23.css" />
+    <Content Include="assets\css\demos\demo-24.css" />
+    <Content Include="assets\css\demos\demo-3.css" />
+    <Content Include="assets\css\demos\demo-4.css" />
+    <Content Include="assets\css\demos\demo-5.css" />
+    <Content Include="assets\css\demos\demo-6.css" />
+    <Content Include="assets\css\demos\demo-7.css" />
+    <Content Include="assets\css\demos\demo-8.css" />
+    <Content Include="assets\css\demos\demo-9.css" />
+    <Content Include="assets\css\main.min.css" />
+    <Content Include="assets\css\plugins\jquery.countdown.css" />
+    <Content Include="assets\css\plugins\magnific-popup\magnific-popup.css" />
+    <Content Include="assets\css\plugins\nouislider\nouislider.css" />
+    <Content Include="assets\css\plugins\owl-carousel\owl.carousel.css" />
+    <Content Include="assets\css\skins\skin-demo-10.css" />
+    <Content Include="assets\css\skins\skin-demo-13.css" />
+    <Content Include="assets\css\skins\skin-demo-14.css" />
+    <Content Include="assets\css\skins\skin-demo-17.css" />
+    <Content Include="assets\css\skins\skin-demo-19.css" />
+    <Content Include="assets\css\skins\skin-demo-2.css" />
+    <Content Include="assets\css\skins\skin-demo-20.css" />
+    <Content Include="assets\css\skins\skin-demo-21.css" />
+    <Content Include="assets\css\skins\skin-demo-22.css" />
+    <Content Include="assets\css\skins\skin-demo-23.css" />
+    <Content Include="assets\css\skins\skin-demo-24.css" />
+    <Content Include="assets\css\skins\skin-demo-3.css" />
+    <Content Include="assets\css\skins\skin-demo-4.css" />
+    <Content Include="assets\css\skins\skin-demo-5.css" />
+    <Content Include="assets\css\skins\skin-demo-6.css" />
+    <Content Include="assets\css\skins\skin-demo-7.css" />
+    <Content Include="assets\css\skins\skin-demo-8.css" />
+    <Content Include="assets\css\skins\skin-demo-9.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\fonts\icon51c1.svg" />
+    <Content Include="assets\fonts\molla0ab2.svg" />
+    <Content Include="assets\images\about-header-bg.jpg" />
+    <Content Include="assets\images\about\about-2\img-1.jpg" />
+    <Content Include="assets\images\about\about-2\signature.png" />
+    <Content Include="assets\images\about\img-1.jpg" />
+    <Content Include="assets\images\about\img-2.jpg" />
+    <Content Include="assets\images\backgrounds\bg-1.jpg" />
+    <Content Include="assets\images\backgrounds\bg-2.jpg" />
+    <Content Include="assets\images\backgrounds\bg-4.jpg" />
+    <Content Include="assets\images\backgrounds\cta\bg-1.jpg" />
+    <Content Include="assets\images\backgrounds\cta\bg-2.jpg" />
+    <Content Include="assets\images\backgrounds\cta\bg-3.jpg" />
+    <Content Include="assets\images\backgrounds\cta\bg-4.jpg" />
+    <Content Include="assets\images\backgrounds\cta\bg-5.jpg" />
+    <Content Include="assets\images\backgrounds\cta\bg-6.jpg" />
+    <Content Include="assets\images\backgrounds\cta\bg-7.jpg" />
+    <Content Include="assets\images\backgrounds\error-bg.jpg" />
+    <Content Include="assets\images\backgrounds\login-bg.jpg" />
+    <Content Include="assets\images\backgrounds\soon-bg.jpg" />
+    <Content Include="assets\images\banners\3cols\banner-1.jpg" />
+    <Content Include="assets\images\banners\3cols\banner-2.jpg" />
+    <Content Include="assets\images\banners\3cols\banner-3.jpg" />
+    <Content Include="assets\images\banners\3cols\banner-4.jpg" />
+    <Content Include="assets\images\banners\3cols\banner-5.jpg" />
+    <Content Include="assets\images\banners\3cols\banner-6.jpg" />
+    <Content Include="assets\images\banners\banner-1.jpg" />
+    <Content Include="assets\images\banners\banner-2.jpg" />
+    <Content Include="assets\images\banners\banner-fullwidth.jpg" />
+    <Content Include="assets\images\banners\grid\3cols\banner-1.jpg" />
+    <Content Include="assets\images\banners\grid\3cols\banner-2.jpg" />
+    <Content Include="assets\images\banners\grid\3cols\banner-3.jpg" />
+    <Content Include="assets\images\banners\grid\4cols\banner-1.jpg" />
+    <Content Include="assets\images\banners\grid\4cols\banner-2.jpg" />
+    <Content Include="assets\images\banners\grid\4cols\banner-3.jpg" />
+    <Content Include="assets\images\banners\grid\4cols\banner-4.jpg" />
+    <Content Include="assets\images\banners\home\banner-1.jpg" />
+    <Content Include="assets\images\banners\home\banner-2.jpg" />
+    <Content Include="assets\images\banners\home\banner-3.jpg" />
+    <Content Include="assets\images\banners\home\banner-4.jpg" />
+    <Content Include="assets\images\banners\home\intro\banner-1.jpg" />
+    <Content Include="assets\images\banners\home\intro\banner-2.jpg" />
+    <Content Include="assets\images\blog\3cols\post-1.jpg" />
+    <Content Include="assets\images\blog\3cols\post-2.jpg" />
+    <Content Include="assets\images\blog\3cols\post-3.jpg" />
+    <Content Include="assets\images\blog\4cols\post-1.jpg" />
+    <Content Include="assets\images\blog\4cols\post-2.jpg" />
+    <Content Include="assets\images\blog\4cols\post-3.jpg" />
+    <Content Include="assets\images\blog\4cols\post-4.jpg" />
+    <Content Include="assets\images\blog\comments\1.jpg" />
+    <Content Include="assets\images\blog\comments\2.jpg" />
+    <Content Include="assets\images\blog\comments\3.jpg" />
+    <Content Include="assets\images\blog\grid\2cols\post-1.jpg" />
+    <Content Include="assets\images\blog\grid\2cols\post-2.jpg" />
+    <Content Include="assets\images\blog\grid\2cols\post-3.jpg" />
+    <Content Include="assets\images\blog\grid\2cols\post-4.jpg" />
+    <Content Include="assets\images\blog\grid\2cols\post-5.jpg" />
+    <Content Include="assets\images\blog\grid\2cols\post-6.jpg" />
+    <Content Include="assets\images\blog\grid\3cols\post-1.jpg" />
+    <Content Include="assets\images\blog\grid\3cols\post-2.jpg" />
+    <Content Include="assets\images\blog\grid\3cols\post-3.jpg" />
+    <Content Include="assets\images\blog\grid\3cols\post-4.jpg" />
+    <Content Include="assets\images\blog\grid\3cols\post-5.jpg" />
+    <Content Include="assets\images\blog\grid\3cols\post-6.jpg" />
+    <Content Include="assets\images\blog\grid\3cols\post-7.jpg" />
+    <Content Include="assets\images\blog\grid\3cols\post-8.jpg" />
+    <Content Include="assets\images\blog\grid\3cols\post-9.jpg" />
+    <Content Include="assets\images\blog\grid\4cols\post-1.jpg" />
+    <Content Include="assets\images\blog\grid\4cols\post-2.jpg" />
+    <Content Include="assets\images\blog\grid\4cols\post-3.jpg" />
+    <Content Include="assets\images\blog\grid\4cols\post-4.jpg" />
+    <Content Include="assets\images\blog\grid\4cols\post-5.jpg" />
+    <Content Include="assets\images\blog\grid\4cols\post-6.jpg" />
+    <Content Include="assets\images\blog\grid\4cols\post-7.jpg" />
+    <Content Include="assets\images\blog\grid\4cols\post-8.jpg" />
+    <Content Include="assets\images\blog\home\post-1.jpg" />
+    <Content Include="assets\images\blog\home\post-2.jpg" />
+    <Content Include="assets\images\blog\home\post-3.jpg" />
+    <Content Include="assets\images\blog\listing\post-1.jpg" />
+    <Content Include="assets\images\blog\listing\post-2.jpg" />
+    <Content Include="assets\images\blog\listing\post-3.jpg" />
+    <Content Include="assets\images\blog\listing\post-4.jpg" />
+    <Content Include="assets\images\blog\listing\post-5.jpg" />
+    <Content Include="assets\images\blog\listing\post-6.jpg" />
+    <Content Include="assets\images\blog\mask\grid\post-1.jpg" />
+    <Content Include="assets\images\blog\mask\grid\post-2.jpg" />
+    <Content Include="assets\images\blog\mask\grid\post-3.jpg" />
+    <Content Include="assets\images\blog\mask\grid\post-4.jpg" />
+    <Content Include="assets\images\blog\mask\grid\post-5.jpg" />
+    <Content Include="assets\images\blog\mask\grid\post-6.jpg" />
+    <Content Include="assets\images\blog\mask\grid\post-7.jpg" />
+    <Content Include="assets\images\blog\mask\grid\post-8.jpg" />
+    <Content Include="assets\images\blog\mask\grid\post-9.jpg" />
+    <Content Include="assets\images\blog\mask\masonry\post-1.jpg" />
+    <Content Include="assets\images\blog\mask\masonry\post-2.jpg" />
+    <Content Include="assets\images\blog\mask\masonry\post-3.jpg" />
+    <Content Include="assets\images\blog\mask\masonry\post-4.jpg" />
+    <Content Include="assets\images\blog\mask\masonry\post-5.jpg" />
+    <Content Include="assets\images\blog\mask\masonry\post-6.jpg" />
+    <Content Include="assets\images\blog\mask\masonry\post-7.jpg" />
+    <Content Include="assets\images\blog\mask\masonry\post-8.jpg" />
+    <Content Include="assets\images\blog\mask\masonry\post-9.jpg" />
+    <Content Include="assets\images\blog\masonry\2cols\post-1.jpg" />
+    <Content Include="assets\images\blog\masonry\2cols\post-2.jpg" />
+    <Content Include="assets\images\blog\masonry\2cols\post-3.jpg" />
+    <Content Include="assets\images\blog\masonry\2cols\post-4-2.jpg" />
+    <Content Include="assets\images\blog\masonry\2cols\post-4.jpg" />
+    <Content Include="assets\images\blog\masonry\2cols\post-5.jpg" />
+    <Content Include="assets\images\blog\masonry\2cols\post-6.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-1.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-2.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-3-2.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-3.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-4.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-5.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-6.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-7.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-8.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-9-2.jpg" />
+    <Content Include="assets\images\blog\masonry\3cols\post-9.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-1.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-10.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-11.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-12.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-2.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-3-2.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-3.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-4.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-5.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-6.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-7.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-8-2.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-8.jpg" />
+    <Content Include="assets\images\blog\masonry\4cols\post-9.jpg" />
+    <Content Include="assets\images\blog\masonry\with-sidebar\post-1.jpg" />
+    <Content Include="assets\images\blog\masonry\with-sidebar\post-2.jpg" />
+    <Content Include="assets\images\blog\masonry\with-sidebar\post-3.jpg" />
+    <Content Include="assets\images\blog\masonry\with-sidebar\post-4.jpg" />
+    <Content Include="assets\images\blog\masonry\with-sidebar\post-5.jpg" />
+    <Content Include="assets\images\blog\masonry\with-sidebar\post-6.jpg" />
+    <Content Include="assets\images\blog\masonry\with-sidebar\post-7.jpg" />
+    <Content Include="assets\images\blog\masonry\with-sidebar\post-8-2.jpg" />
+    <Content Include="assets\images\blog\masonry\with-sidebar\post-8.jpg" />
+    <Content Include="assets\images\blog\post-1.jpg" />
+    <Content Include="assets\images\blog\post-2.jpg" />
+    <Content Include="assets\images\blog\post-3.jpg" />
+    <Content Include="assets\images\blog\post-4.jpg" />
+    <Content Include="assets\images\blog\post-5.jpg" />
+    <Content Include="assets\images\blog\sidebar\banner.jpg" />
+    <Content Include="assets\images\blog\sidebar\post-1.jpg" />
+    <Content Include="assets\images\blog\sidebar\post-2.jpg" />
+    <Content Include="assets\images\blog\sidebar\post-3.jpg" />
+    <Content Include="assets\images\blog\sidebar\post-4.jpg" />
+    <Content Include="assets\images\blog\single\1.jpg" />
+    <Content Include="assets\images\blog\single\2.jpg" />
+    <Content Include="assets\images\blog\single\3.jpg" />
+    <Content Include="assets\images\blog\single\author.jpg" />
+    <Content Include="assets\images\blog\single\fullwidth-sidebar\1.jpg" />
+    <Content Include="assets\images\blog\single\fullwidth-sidebar\2.jpg" />
+    <Content Include="assets\images\blog\single\fullwidth-sidebar\3.jpg" />
+    <Content Include="assets\images\blog\single\fullwidth-sidebar\4.jpg" />
+    <Content Include="assets\images\blog\single\fullwidth-sidebar\5.jpg" />
+    <Content Include="assets\images\blog\single\fullwidth\1.jpg" />
+    <Content Include="assets\images\blog\single\fullwidth\2.jpg" />
+    <Content Include="assets\images\blog\single\fullwidth\3.jpg" />
+    <Content Include="assets\images\brands\1.png" />
+    <Content Include="assets\images\brands\2.png" />
+    <Content Include="assets\images\brands\3.png" />
+    <Content Include="assets\images\brands\4.png" />
+    <Content Include="assets\images\brands\5.png" />
+    <Content Include="assets\images\brands\6.png" />
+    <Content Include="assets\images\brands\7.png" />
+    <Content Include="assets\images\brands\8.png" />
+    <Content Include="assets\images\brands\9.png" />
+    <Content Include="assets\images\category\3cols\banner-1.jpg" />
+    <Content Include="assets\images\category\3cols\banner-2.jpg" />
+    <Content Include="assets\images\category\3cols\banner-3.jpg" />
+    <Content Include="assets\images\category\4cols\banner-1.jpg" />
+    <Content Include="assets\images\category\4cols\banner-2.jpg" />
+    <Content Include="assets\images\category\4cols\banner-3.jpg" />
+    <Content Include="assets\images\category\4cols\banner-4.jpg" />
+    <Content Include="assets\images\category\banner-1.jpg" />
+    <Content Include="assets\images\category\banner-2.jpg" />
+    <Content Include="assets\images\category\boxed\banner-1.jpg" />
+    <Content Include="assets\images\category\boxed\banner-2.jpg" />
+    <Content Include="assets\images\category\boxed\banner-3.jpg" />
+    <Content Include="assets\images\category\boxed\banner-4.jpg" />
+    <Content Include="assets\images\category\boxed\banner-5.jpg" />
+    <Content Include="assets\images\category\boxed\banner-6.jpg" />
+    <Content Include="assets\images\category\boxed\banner-7.jpg" />
+    <Content Include="assets\images\category\boxed\banner-8.jpg" />
+    <Content Include="assets\images\category\fullwidth-page\banner-1.jpg" />
+    <Content Include="assets\images\category\fullwidth-page\banner-2.jpg" />
+    <Content Include="assets\images\category\fullwidth-page\banner-3.jpg" />
+    <Content Include="assets\images\category\fullwidth-page\banner-4.jpg" />
+    <Content Include="assets\images\category\fullwidth-page\banner-5.jpg" />
+    <Content Include="assets\images\category\fullwidth-page\banner-6.jpg" />
+    <Content Include="assets\images\category\fullwidth-page\banner-7.jpg" />
+    <Content Include="assets\images\category\fullwidth-page\banner-8.jpg" />
+    <Content Include="assets\images\category\fullwidth\banner-1.jpg" />
+    <Content Include="assets\images\category\fullwidth\banner-2.jpg" />
+    <Content Include="assets\images\category\fullwidth\banner-3.jpg" />
+    <Content Include="assets\images\category\grid2\banner-1.jpg" />
+    <Content Include="assets\images\category\grid2\banner-2.jpg" />
+    <Content Include="assets\images\category\grid2\banner-3.jpg" />
+    <Content Include="assets\images\category\grid\banner-1.jpg" />
+    <Content Include="assets\images\category\grid\banner-2.jpg" />
+    <Content Include="assets\images\category\grid\banner-3.jpg" />
+    <Content Include="assets\images\category\grid\banner-4.jpg" />
+    <Content Include="assets\images\contact-header-bg.jpg" />
+    <Content Include="assets\images\demos-img\elements.png" />
+    <Content Include="assets\images\demos-img\header_splash.jpg" />
+    <Content Include="assets\images\demos-img\lazy.png" />
+    <Content Include="assets\images\demos-img\logo.png" />
+    <Content Include="assets\images\demos-img\support_bg.jpg" />
+    <Content Include="assets\images\demos\demo-10\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-10\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-10\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-10\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-10\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-10\banners\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-10\banners\banner-7.jpg" />
+    <Content Include="assets\images\demos\demo-10\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-10\bg-2.jpg" />
+    <Content Include="assets\images\demos\demo-10\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-10\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-10\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-10\blog\post-4.jpg" />
+    <Content Include="assets\images\demos\demo-10\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-10\logo.png" />
+    <Content Include="assets\images\demos\demo-10\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-11.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-12.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-13.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-14.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-10\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-10\slider\slide-1-480w.jpg" />
+    <Content Include="assets\images\demos\demo-10\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-10\slider\slide-2-480w.jpg" />
+    <Content Include="assets\images\demos\demo-10\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-10\slider\slide-3-480w.jpg" />
+    <Content Include="assets\images\demos\demo-10\slider\slide-3.jpg" />
+    <Content Include="assets\images\demos\demo-11\logo.png" />
+    <Content Include="assets\images\demos\demo-11\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-11.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-12.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-11\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-11\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-11\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-12\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-12\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-12\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-12\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-12\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-12\banners\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-12\banners\banner-7.jpg" />
+    <Content Include="assets\images\demos\demo-12\logo.png" />
+    <Content Include="assets\images\demos\demo-12\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-12\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-12\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-13\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-13\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-13\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-13\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-13\banners\banner-5.png" />
+    <Content Include="assets\images\demos\demo-13\banners\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-13\banners\banner-7.jpg" />
+    <Content Include="assets\images\demos\demo-13\banners\banner-8.jpg" />
+    <Content Include="assets\images\demos\demo-13\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-13\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-13\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-13\blog\post-4.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\1.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\2.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\3.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\4.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\5.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\6.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\cat-page\1.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\cat-page\2.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\cat-page\3.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\cat-page\4.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\cat-page\5.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\cat-page\6.jpg" />
+    <Content Include="assets\images\demos\demo-13\cats\cat-page\7.jpg" />
+    <Content Include="assets\images\demos\demo-13\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-13\logo.png" />
+    <Content Include="assets\images\demos\demo-13\menu\1.jpg" />
+    <Content Include="assets\images\demos\demo-13\menu\2.jpg" />
+    <Content Include="assets\images\demos\demo-13\menu\3.jpg" />
+    <Content Include="assets\images\demos\demo-13\menu\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-13\menu\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-13\menu\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-11.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-12.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-13.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-14.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-15.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-16.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-17.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-18.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-19.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-20.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-13\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-13\slider\slide-1.png" />
+    <Content Include="assets\images\demos\demo-13\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-13\slider\slide-3.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-1.png" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-10.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-11.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-12.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-3.png" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-7.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-8.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-9.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-bg-2.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-bg-3.jpg" />
+    <Content Include="assets\images\demos\demo-14\banners\banner-bg-4.jpg" />
+    <Content Include="assets\images\demos\demo-14\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-14\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-14\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-14\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-14\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-14\logo.png" />
+    <Content Include="assets\images\demos\demo-14\products\deals\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\deals\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-11.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-12.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-13.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-14.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-15.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-16.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-17.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-18.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-19.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-20.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-21.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\small\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\small\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\small\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\small\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-14\products\small\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-14\slider\slide-1-480w.jpg" />
+    <Content Include="assets\images\demos\demo-14\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-14\slider\slide-2-480w.jpg" />
+    <Content Include="assets\images\demos\demo-14\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-14\slider\slide-3-480w.jpg" />
+    <Content Include="assets\images\demos\demo-14\slider\slide-3.jpg" />
+    <Content Include="assets\images\demos\demo-15\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-15\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-15\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-15\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-15\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-15\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-15\blog\post-4.jpg" />
+    <Content Include="assets\images\demos\demo-15\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-15\logo.png" />
+    <Content Include="assets\images\demos\demo-15\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-10-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-15\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-15\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-16\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-16\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-16\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-16\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-16\instagram\1.jpg" />
+    <Content Include="assets\images\demos\demo-16\instagram\2.jpg" />
+    <Content Include="assets\images\demos\demo-16\instagram\3.jpg" />
+    <Content Include="assets\images\demos\demo-16\instagram\4.jpg" />
+    <Content Include="assets\images\demos\demo-16\instagram\5.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-10-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-16\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-16\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-17\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-17\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-17\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-17\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-17\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-17\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-17\instagram\1.jpg" />
+    <Content Include="assets\images\demos\demo-17\instagram\2.jpg" />
+    <Content Include="assets\images\demos\demo-17\instagram\3.jpg" />
+    <Content Include="assets\images\demos\demo-17\instagram\4.jpg" />
+    <Content Include="assets\images\demos\demo-17\instagram\5.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-17\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-18\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-18\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-18\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-18\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-18\bg-newsletter.jpg" />
+    <Content Include="assets\images\demos\demo-18\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-18\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\instagram\1.jpg" />
+    <Content Include="assets\images\demos\demo-18\instagram\2.jpg" />
+    <Content Include="assets\images\demos\demo-18\instagram\3.jpg" />
+    <Content Include="assets\images\demos\demo-18\instagram\4.jpg" />
+    <Content Include="assets\images\demos\demo-18\instagram\5.jpg" />
+    <Content Include="assets\images\demos\demo-18\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-18\logo.png" />
+    <Content Include="assets\images\demos\demo-18\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\small\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\small\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\small\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-18\products\small\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-18\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-18\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-1-title.png" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-10-title.png" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-10.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-2-title.png" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-3-title.png" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-4-title.png" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-5-title.png" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-6-title.png" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-7.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-8-title.png" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-8.jpg" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-9-title.png" />
+    <Content Include="assets\images\demos\demo-19\banners\banner-9.jpg" />
+    <Content Include="assets\images\demos\demo-19\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-19\bg-2.jpg" />
+    <Content Include="assets\images\demos\demo-19\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-19\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-19\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-19\blog\post-4.jpg" />
+    <Content Include="assets\images\demos\demo-19\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-19\menu\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-19\menu\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-11.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-12.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-13.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-14.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-15.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-16.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-19\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-20\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-20\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-20\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-20\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-20\banners\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-20\banners\banner-7.jpg" />
+    <Content Include="assets\images\demos\demo-20\banners\banner-8.jpg" />
+    <Content Include="assets\images\demos\demo-20\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-20\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-20\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-20\blog\post-4.jpg" />
+    <Content Include="assets\images\demos\demo-20\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-20\logo.png" />
+    <Content Include="assets\images\demos\demo-20\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-11.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-12.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-14.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-big-1-bg.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-big-1.jpg" />
+    <Content Include="assets\images\demos\demo-20\products\product-big-2-bg.jpg" />
+    <Content Include="assets\images\demos\demo-21\banner\accessories.jpg" />
+    <Content Include="assets\images\demos\demo-21\banner\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-21\banner\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-21\banner\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-21\banner\footware.jpg" />
+    <Content Include="assets\images\demos\demo-21\banner\mens.jpg" />
+    <Content Include="assets\images\demos\demo-21\banner\womens.jpg" />
+    <Content Include="assets\images\demos\demo-21\bestSellers\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-21\bestSellers\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-21\bestSellers\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-21\bestSellers\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-21\bestSellers\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-21\bestSellers\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-21\bestSellers\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-21\bestSellers\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-21\chooseStyle\background.png" />
+    <Content Include="assets\images\demos\demo-21\chooseStyle\inspirationback.jpg" />
+    <Content Include="assets\images\demos\demo-21\chooseStyle\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-21\chooseStyle\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-21\chooseStyle\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-21\instagramStore\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-21\instagramStore\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-21\instagramStore\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-21\instagramStore\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-21\instagramStore\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-21\instagramStore\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-21\instagramStore\banner-7.jpg" />
+    <Content Include="assets\images\demos\demo-21\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-21\logo.png" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-21\newArrivals\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-21\newsLetter\banner.jpg" />
+    <Content Include="assets\images\demos\demo-21\notification-back.jpg" />
+    <Content Include="assets\images\demos\demo-21\slider\slide-1.png" />
+    <Content Include="assets\images\demos\demo-21\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-22\bannerad\background.jpg" />
+    <Content Include="assets\images\demos\demo-22\banner\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-22\banner\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-22\featured\background.jpg" />
+    <Content Include="assets\images\demos\demo-22\featured\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-22\featured\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-22\featured\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-22\featured\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-22\featured\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-22\featured\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-22\featured\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-22\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-22\logo.png" />
+    <Content Include="assets\images\demos\demo-22\newsLetter\background.jpg" />
+    <Content Include="assets\images\demos\demo-22\post\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-22\post\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-22\post\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-22\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-22\slider\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-22\slider\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-22\slider\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-22\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-22\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-23\instagram\img-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\instagram\img-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\instagram\img-3.jpg" />
+    <Content Include="assets\images\demos\demo-23\instagram\img-4.jpg" />
+    <Content Include="assets\images\demos\demo-23\instagram\img-5.jpg" />
+    <Content Include="assets\images\demos\demo-23\logo.png" />
+    <Content Include="assets\images\demos\demo-23\new-men\banner.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-color-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-men\product-color-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-women\banner.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-women\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-women\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-women\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-women\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-women\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-women\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-women\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\new-women\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\slider\slide.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-5-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-color-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-23\tranding\product-color-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-24\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-24\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-24\banners\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-24\banners\banner-7.jpg" />
+    <Content Include="assets\images\demos\demo-24\banners\banner-8.jpg" />
+    <Content Include="assets\images\demos\demo-24\banners\percent.png" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-5-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-6-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\best-sellers\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\blog\blog-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\blog\blog-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\blog\blog-3.jpg" />
+    <Content Include="assets\images\demos\demo-24\brands\1.png" />
+    <Content Include="assets\images\demos\demo-24\brands\2.png" />
+    <Content Include="assets\images\demos\demo-24\brands\3.png" />
+    <Content Include="assets\images\demos\demo-24\brands\4.png" />
+    <Content Include="assets\images\demos\demo-24\brands\5.png" />
+    <Content Include="assets\images\demos\demo-24\brands\6.png" />
+    <Content Include="assets\images\demos\demo-24\featured-products\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\featured-products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\featured-products\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\featured-products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\featured-products\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\featured-products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\featured-products\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\featured-products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\featured-products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-24\instagram\back-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\instagram\back-2.jpg" />
+    <Content Include="assets\images\demos\demo-24\instagram\back-3.jpg" />
+    <Content Include="assets\images\demos\demo-24\instagram\back-4.jpg" />
+    <Content Include="assets\images\demos\demo-24\instagram\back-5.jpg" />
+    <Content Include="assets\images\demos\demo-24\logo.png" />
+    <Content Include="assets\images\demos\demo-24\slider\back-1.jpg" />
+    <Content Include="assets\images\demos\demo-24\slider\back-2.png" />
+    <Content Include="assets\images\demos\demo-24\video-banner\banner.jpg" />
+    <Content Include="assets\images\demos\demo-2\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-2\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-2\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-2\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-2\deal\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\logo.png" />
+    <Content Include="assets\images\demos\demo-2\products\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-10-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-10-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-11-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-11-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-12-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-12-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-13-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-13-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-14-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-14-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-15-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-15-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-16-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-16-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-5-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-6-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-7-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-8-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-9-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-2\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-2\slider\slide-3.jpg" />
+    <Content Include="assets\images\demos\demo-3\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-3\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-3\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-3\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-3\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-3\bg-2.jpg" />
+    <Content Include="assets\images\demos\demo-3\deal\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-3\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-3\logo.png" />
+    <Content Include="assets\images\demos\demo-3\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-11.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-12.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-13.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-14.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-15.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-3\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-3\slider\slide-1-480w.jpg" />
+    <Content Include="assets\images\demos\demo-3\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-3\slider\slide-2-480w.jpg" />
+    <Content Include="assets\images\demos\demo-3\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-4\banners\banner-1.png" />
+    <Content Include="assets\images\demos\demo-4\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-4\banners\banner-3.png" />
+    <Content Include="assets\images\demos\demo-4\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-4\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-4\bg-5.jpg" />
+    <Content Include="assets\images\demos\demo-4\camera.png" />
+    <Content Include="assets\images\demos\demo-4\cats\1.png" />
+    <Content Include="assets\images\demos\demo-4\cats\2.png" />
+    <Content Include="assets\images\demos\demo-4\cats\3.png" />
+    <Content Include="assets\images\demos\demo-4\cats\4.png" />
+    <Content Include="assets\images\demos\demo-4\cats\5.png" />
+    <Content Include="assets\images\demos\demo-4\cats\6.png" />
+    <Content Include="assets\images\demos\demo-4\deal\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-4\deal\bg-2.jpg" />
+    <Content Include="assets\images\demos\demo-4\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-4\logo.png" />
+    <Content Include="assets\images\demos\demo-4\products\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-10.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-11.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-12-2.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-12.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-13.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-14.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-15.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-16.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-17.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-3.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-4.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-5.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-6.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-7.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-8.jpg" />
+    <Content Include="assets\images\demos\demo-4\products\product-9.jpg" />
+    <Content Include="assets\images\demos\demo-4\slider\slide-1.png" />
+    <Content Include="assets\images\demos\demo-4\slider\slide-2.png" />
+    <Content Include="assets\images\demos\demo-5\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-5\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-5\bg-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\instagram\1.jpg" />
+    <Content Include="assets\images\demos\demo-5\instagram\2.jpg" />
+    <Content Include="assets\images\demos\demo-5\instagram\3.jpg" />
+    <Content Include="assets\images\demos\demo-5\instagram\4.jpg" />
+    <Content Include="assets\images\demos\demo-5\instagram\5.jpg" />
+    <Content Include="assets\images\demos\demo-5\instagram\6.jpg" />
+    <Content Include="assets\images\demos\demo-5\instagram\7.jpg" />
+    <Content Include="assets\images\demos\demo-5\instagram\8.jpg" />
+    <Content Include="assets\images\demos\demo-5\instagram\9.jpg" />
+    <Content Include="assets\images\demos\demo-5\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-5\logo.png" />
+    <Content Include="assets\images\demos\demo-5\products\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-10-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-10-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-11-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-11-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-12-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-12-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-13.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-14.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-5-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-6-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-7-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-8-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-9-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-5\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-5\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-6\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-6\deal\bg-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\deal\product-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\deal\product-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-6\logo.png" />
+    <Content Include="assets\images\demos\demo-6\products\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-1-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-1-3-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-1-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-10-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-10-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-10-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-10-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-11-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-11-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-12-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-12-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-4-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-4-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-5-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-6-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-7-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-7-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-7-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-8-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-9-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-6\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-6\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-7\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-7\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-7\blog\post-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\blog\post-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\blog\post-3.jpg" />
+    <Content Include="assets\images\demos\demo-7\blog\post-4.jpg" />
+    <Content Include="assets\images\demos\demo-7\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-7\logo.png" />
+    <Content Include="assets\images\demos\demo-7\products\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-10-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-10-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-11-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-11-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-12-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-12-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-13-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-13-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-14-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-14-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-15-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-15-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-5-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-6-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-7-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-8-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-9-1.jpg" />
+    <Content Include="assets\images\demos\demo-7\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-8\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-8\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-8\banners\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-8\instagram\1.jpg" />
+    <Content Include="assets\images\demos\demo-8\instagram\2.jpg" />
+    <Content Include="assets\images\demos\demo-8\instagram\3.jpg" />
+    <Content Include="assets\images\demos\demo-8\instagram\4.jpg" />
+    <Content Include="assets\images\demos\demo-8\instagram\5.jpg" />
+    <Content Include="assets\images\demos\demo-8\instagram\6.jpg" />
+    <Content Include="assets\images\demos\demo-8\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-8\logo.png" />
+    <Content Include="assets\images\demos\demo-8\products\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-1-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-1-3-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-1-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-10-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-10-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-10-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-10-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-11-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-11-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-12-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-12-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-4-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-4-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-5-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-6-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-7-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-7-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-7-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-8-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-9-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-8\slider\img-1.png" />
+    <Content Include="assets\images\demos\demo-8\slider\img-2.png" />
+    <Content Include="assets\images\demos\demo-8\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-8\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\banners\banner-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\banners\banner-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\banners\banner-3.jpg" />
+    <Content Include="assets\images\demos\demo-9\banners\banner-4.jpg" />
+    <Content Include="assets\images\demos\demo-9\banners\banner-5.jpg" />
+    <Content Include="assets\images\demos\demo-9\banners\banner-6.jpg" />
+    <Content Include="assets\images\demos\demo-9\instagram\1.jpg" />
+    <Content Include="assets\images\demos\demo-9\instagram\2.jpg" />
+    <Content Include="assets\images\demos\demo-9\instagram\3.jpg" />
+    <Content Include="assets\images\demos\demo-9\instagram\4.jpg" />
+    <Content Include="assets\images\demos\demo-9\instagram\5.jpg" />
+    <Content Include="assets\images\demos\demo-9\instagram\6.jpg" />
+    <Content Include="assets\images\demos\demo-9\logo-footer.png" />
+    <Content Include="assets\images\demos\demo-9\logo.png" />
+    <Content Include="assets\images\demos\demo-9\products\product-1-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-1-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-1-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-1-3-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-1-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-10-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-10-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-10-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-10-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-2-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-2-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-3-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-3-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-4-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-4-2-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-4-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-4-thumb.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-5-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-5-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-6-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-6-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-7-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-7-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-8-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-8-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-9-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\products\product-9-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\slider\slide-1-480w.jpg" />
+    <Content Include="assets\images\demos\demo-9\slider\slide-1.jpg" />
+    <Content Include="assets\images\demos\demo-9\slider\slide-2-480w.jpg" />
+    <Content Include="assets\images\demos\demo-9\slider\slide-2.jpg" />
+    <Content Include="assets\images\demos\demo-9\slider\slide-3-480w.jpg" />
+    <Content Include="assets\images\demos\demo-9\slider\slide-3.jpg" />
+    <Content Include="assets\images\elements.png" />
+    <Content Include="assets\images\icons\apple-touch-icon.png" />
+    <Content Include="assets\images\icons\browserconfig.xml" />
+    <Content Include="assets\images\icons\favicon-16x16.png" />
+    <Content Include="assets\images\icons\favicon-32x32.png" />
+    <Content Include="assets\images\icons\favicon.ico" />
+    <Content Include="assets\images\icons\safari-pinned-tab.svg" />
+    <Content Include="assets\images\icons\site.html" />
+    <Content Include="assets\images\logo-footer.png" />
+    <Content Include="assets\images\logo-icon.png" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\menu\banner-1.jpg" />
+    <Content Include="assets\images\menu\banner-2.jpg" />
+    <Content Include="assets\images\menu\demos\1.jpg" />
+    <Content Include="assets\images\menu\demos\10.jpg" />
+    <Content Include="assets\images\menu\demos\11.jpg" />
+    <Content Include="assets\images\menu\demos\12.jpg" />
+    <Content Include="assets\images\menu\demos\13.jpg" />
+    <Content Include="assets\images\menu\demos\14.jpg" />
+    <Content Include="assets\images\menu\demos\15.jpg" />
+    <Content Include="assets\images\menu\demos\16.jpg" />
+    <Content Include="assets\images\menu\demos\17.jpg" />
+    <Content Include="assets\images\menu\demos\18.jpg" />
+    <Content Include="assets\images\menu\demos\19.jpg" />
+    <Content Include="assets\images\menu\demos\2.jpg" />
+    <Content Include="assets\images\menu\demos\20.jpg" />
+    <Content Include="assets\images\menu\demos\21.jpg" />
+    <Content Include="assets\images\menu\demos\22.jpg" />
+    <Content Include="assets\images\menu\demos\23.jpg" />
+    <Content Include="assets\images\menu\demos\24.jpg" />
+    <Content Include="assets\images\menu\demos\3.jpg" />
+    <Content Include="assets\images\menu\demos\4.jpg" />
+    <Content Include="assets\images\menu\demos\5.jpg" />
+    <Content Include="assets\images\menu\demos\6.jpg" />
+    <Content Include="assets\images\menu\demos\7.jpg" />
+    <Content Include="assets\images\menu\demos\8.jpg" />
+    <Content Include="assets\images\menu\demos\9.jpg" />
+    <Content Include="assets\images\nav-next-shadow.png" />
+    <Content Include="assets\images\nav-prev-shadow.png" />
+    <Content Include="assets\images\page-header-bg.jpg" />
+    <Content Include="assets\images\payments-summary.png" />
+    <Content Include="assets\images\payments.png" />
+    <Content Include="assets\images\popup\newsletter\img-1.jpg" />
+    <Content Include="assets\images\popup\newsletter\logo.png" />
+    <Content Include="assets\images\portfolio\4cols\item-1.jpg" />
+    <Content Include="assets\images\portfolio\4cols\item-2.jpg" />
+    <Content Include="assets\images\portfolio\4cols\item-3.jpg" />
+    <Content Include="assets\images\portfolio\4cols\item-4.jpg" />
+    <Content Include="assets\images\portfolio\4cols\item-5.jpg" />
+    <Content Include="assets\images\portfolio\4cols\item-6.jpg" />
+    <Content Include="assets\images\portfolio\4cols\item-7.jpg" />
+    <Content Include="assets\images\portfolio\4cols\item-8.jpg" />
+    <Content Include="assets\images\portfolio\fullwidth\item-1.jpg" />
+    <Content Include="assets\images\portfolio\fullwidth\item-2.jpg" />
+    <Content Include="assets\images\portfolio\fullwidth\item-3.jpg" />
+    <Content Include="assets\images\portfolio\fullwidth\item-4.jpg" />
+    <Content Include="assets\images\portfolio\fullwidth\item-5.jpg" />
+    <Content Include="assets\images\portfolio\fullwidth\item-6.jpg" />
+    <Content Include="assets\images\portfolio\fullwidth\item-7.jpg" />
+    <Content Include="assets\images\portfolio\fullwidth\item-8.jpg" />
+    <Content Include="assets\images\portfolio\item-1.jpg" />
+    <Content Include="assets\images\portfolio\item-2.jpg" />
+    <Content Include="assets\images\portfolio\item-3.jpg" />
+    <Content Include="assets\images\portfolio\item-4.jpg" />
+    <Content Include="assets\images\portfolio\item-5.jpg" />
+    <Content Include="assets\images\portfolio\item-6.jpg" />
+    <Content Include="assets\images\portfolio\masonry-3cols\item-1.jpg" />
+    <Content Include="assets\images\portfolio\masonry-3cols\item-2.jpg" />
+    <Content Include="assets\images\portfolio\masonry-3cols\item-3.jpg" />
+    <Content Include="assets\images\portfolio\masonry-3cols\item-4.jpg" />
+    <Content Include="assets\images\portfolio\masonry-3cols\item-5.jpg" />
+    <Content Include="assets\images\portfolio\masonry-3cols\item-6.jpg" />
+    <Content Include="assets\images\portfolio\masonry-4cols\item-1.jpg" />
+    <Content Include="assets\images\portfolio\masonry-4cols\item-2.jpg" />
+    <Content Include="assets\images\portfolio\masonry-4cols\item-3.jpg" />
+    <Content Include="assets\images\portfolio\masonry-4cols\item-4.jpg" />
+    <Content Include="assets\images\portfolio\masonry-4cols\item-5.jpg" />
+    <Content Include="assets\images\portfolio\masonry-4cols\item-6.jpg" />
+    <Content Include="assets\images\portfolio\masonry-4cols\item-7.jpg" />
+    <Content Include="assets\images\portfolio\masonry-4cols\item-8.jpg" />
+    <Content Include="assets\images\products\cart\product-1.jpg" />
+    <Content Include="assets\images\products\cart\product-2.jpg" />
+    <Content Include="assets\images\products\elements\5cols\product-1.jpg" />
+    <Content Include="assets\images\products\elements\5cols\product-2.jpg" />
+    <Content Include="assets\images\products\elements\5cols\product-3.jpg" />
+    <Content Include="assets\images\products\elements\5cols\product-4.jpg" />
+    <Content Include="assets\images\products\elements\5cols\product-5.jpg" />
+    <Content Include="assets\images\products\elements\product-1-2-thumb.jpg" />
+    <Content Include="assets\images\products\elements\product-1-3-thumb.jpg" />
+    <Content Include="assets\images\products\elements\product-1-thumb.jpg" />
+    <Content Include="assets\images\products\elements\product-1.jpg" />
+    <Content Include="assets\images\products\elements\product-2.jpg" />
+    <Content Include="assets\images\products\elements\product-3-2.jpg" />
+    <Content Include="assets\images\products\elements\product-3.jpg" />
+    <Content Include="assets\images\products\elements\product-4.jpg" />
+    <Content Include="assets\images\products\elements\product-5.jpg" />
+    <Content Include="assets\images\products\elements\product-6.jpg" />
+    <Content Include="assets\images\products\elements\product-thumb-1.jpg" />
+    <Content Include="assets\images\products\elements\product-thumb-2.jpg" />
+    <Content Include="assets\images\products\elements\product-thumb-3.jpg" />
+    <Content Include="assets\images\products\elements\product-thumb-4.jpg" />
+    <Content Include="assets\images\products\elements\product-thumb-5.jpg" />
+    <Content Include="assets\images\products\product-1.jpg" />
+    <Content Include="assets\images\products\product-10.jpg" />
+    <Content Include="assets\images\products\product-11-2-thumb.jpg" />
+    <Content Include="assets\images\products\product-11-3-thumb.jpg" />
+    <Content Include="assets\images\products\product-11-thumb.jpg" />
+    <Content Include="assets\images\products\product-11.jpg" />
+    <Content Include="assets\images\products\product-12.jpg" />
+    <Content Include="assets\images\products\product-13-2-thumb.jpg" />
+    <Content Include="assets\images\products\product-13-thumb.jpg" />
+    <Content Include="assets\images\products\product-13.jpg" />
+    <Content Include="assets\images\products\product-14-2-thumb.jpg" />
+    <Content Include="assets\images\products\product-14-3-thumb.jpg" />
+    <Content Include="assets\images\products\product-14-thumb.jpg" />
+    <Content Include="assets\images\products\product-14.jpg" />
+    <Content Include="assets\images\products\product-15.jpg" />
+    <Content Include="assets\images\products\product-2.jpg" />
+    <Content Include="assets\images\products\product-3.jpg" />
+    <Content Include="assets\images\products\product-4-2-thumb.jpg" />
+    <Content Include="assets\images\products\product-4-3-thumb.jpg" />
+    <Content Include="assets\images\products\product-4-thumb.jpg" />
+    <Content Include="assets\images\products\product-4.jpg" />
+    <Content Include="assets\images\products\product-5-2-thumb.jpg" />
+    <Content Include="assets\images\products\product-5-thumb.jpg" />
+    <Content Include="assets\images\products\product-5.jpg" />
+    <Content Include="assets\images\products\product-6.jpg" />
+    <Content Include="assets\images\products\product-7.jpg" />
+    <Content Include="assets\images\products\product-8-2-thumb.jpg" />
+    <Content Include="assets\images\products\product-8-thumb.jpg" />
+    <Content Include="assets\images\products\product-8.jpg" />
+    <Content Include="assets\images\products\product-9-2-thumb.jpg" />
+    <Content Include="assets\images\products\product-9-3-thumb.jpg" />
+    <Content Include="assets\images\products\product-9-thumb.jpg" />
+    <Content Include="assets\images\products\product-9.jpg" />
+    <Content Include="assets\images\products\single\1-big.jpg" />
+    <Content Include="assets\images\products\single\1-small.jpg" />
+    <Content Include="assets\images\products\single\1-thumb.jpg" />
+    <Content Include="assets\images\products\single\1.jpg" />
+    <Content Include="assets\images\products\single\2-big.jpg" />
+    <Content Include="assets\images\products\single\2-small.jpg" />
+    <Content Include="assets\images\products\single\2-thumb.jpg" />
+    <Content Include="assets\images\products\single\3-big.jpg" />
+    <Content Include="assets\images\products\single\3-small.jpg" />
+    <Content Include="assets\images\products\single\4-big.jpg" />
+    <Content Include="assets\images\products\single\4-small.jpg" />
+    <Content Include="assets\images\products\single\centered\1-big.jpg" />
+    <Content Include="assets\images\products\single\centered\1-small.jpg" />
+    <Content Include="assets\images\products\single\centered\1.jpg" />
+    <Content Include="assets\images\products\single\centered\2-big.jpg" />
+    <Content Include="assets\images\products\single\centered\2-small.jpg" />
+    <Content Include="assets\images\products\single\centered\3-big.jpg" />
+    <Content Include="assets\images\products\single\centered\3-small.jpg" />
+    <Content Include="assets\images\products\single\centered\4-big.jpg" />
+    <Content Include="assets\images\products\single\centered\4-small.jpg" />
+    <Content Include="assets\images\products\single\extended\1-big.jpg" />
+    <Content Include="assets\images\products\single\extended\1-small.jpg" />
+    <Content Include="assets\images\products\single\extended\2-big.jpg" />
+    <Content Include="assets\images\products\single\extended\2-small.jpg" />
+    <Content Include="assets\images\products\single\extended\3-big.jpg" />
+    <Content Include="assets\images\products\single\extended\3-small.jpg" />
+    <Content Include="assets\images\products\single\extended\3.jpg" />
+    <Content Include="assets\images\products\single\extended\4-big.jpg" />
+    <Content Include="assets\images\products\single\extended\4-small.jpg" />
+    <Content Include="assets\images\products\single\extended\bg-1.jpg" />
+    <Content Include="assets\images\products\single\extended\bg-2.jpg" />
+    <Content Include="assets\images\products\single\extended\bg-3.jpg" />
+    <Content Include="assets\images\products\single\extended\sign.png" />
+    <Content Include="assets\images\products\single\fullwidth\1-big.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\1-small.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\1-thumb.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\2-big.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\2-small.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\2-thumb.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\3-big.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\3-small.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\3-thumb.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\3.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\4-big.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\4-small.jpg" />
+    <Content Include="assets\images\products\single\fullwidth\4-thumb.jpg" />
+    <Content Include="assets\images\products\single\gallery\1.jpg" />
+    <Content Include="assets\images\products\single\gallery\2.jpg" />
+    <Content Include="assets\images\products\single\gallery\3.jpg" />
+    <Content Include="assets\images\products\single\gallery\4.jpg" />
+    <Content Include="assets\images\products\single\masonry\1-thumb.jpg" />
+    <Content Include="assets\images\products\single\masonry\1.jpg" />
+    <Content Include="assets\images\products\single\masonry\2-big.jpg" />
+    <Content Include="assets\images\products\single\masonry\2-small.jpg" />
+    <Content Include="assets\images\products\single\masonry\2-thumb.jpg" />
+    <Content Include="assets\images\products\single\masonry\3-big.jpg" />
+    <Content Include="assets\images\products\single\masonry\3-small.jpg" />
+    <Content Include="assets\images\products\single\masonry\3-thumb.jpg" />
+    <Content Include="assets\images\products\single\masonry\4-big.jpg" />
+    <Content Include="assets\images\products\single\masonry\4-small.jpg" />
+    <Content Include="assets\images\products\single\sidebar-gallery\1-big.jpg" />
+    <Content Include="assets\images\products\single\sidebar-gallery\1-small.jpg" />
+    <Content Include="assets\images\products\single\sidebar-gallery\1.jpg" />
+    <Content Include="assets\images\products\single\sidebar-gallery\2-big.jpg" />
+    <Content Include="assets\images\products\single\sidebar-gallery\2-small.jpg" />
+    <Content Include="assets\images\products\single\sidebar-gallery\3-big.jpg" />
+    <Content Include="assets\images\products\single\sidebar-gallery\3-small.jpg" />
+    <Content Include="assets\images\products\single\sidebar-gallery\4-big.jpg" />
+    <Content Include="assets\images\products\single\sidebar-gallery\4-small.jpg" />
+    <Content Include="assets\images\products\single\sidebar\1.jpg" />
+    <Content Include="assets\images\products\single\sidebar\2.jpg" />
+    <Content Include="assets\images\products\single\sidebar\3.jpg" />
+    <Content Include="assets\images\products\single\sidebar\4.jpg" />
+    <Content Include="assets\images\products\single\sticky\1.jpg" />
+    <Content Include="assets\images\products\single\sticky\2.jpg" />
+    <Content Include="assets\images\products\single\sticky\3.jpg" />
+    <Content Include="assets\images\products\single\sticky\4.jpg" />
+    <Content Include="assets\images\products\sticky\product-1.jpg" />
+    <Content Include="assets\images\products\table\product-1.jpg" />
+    <Content Include="assets\images\products\table\product-2.jpg" />
+    <Content Include="assets\images\products\table\product-3.jpg" />
+    <Content Include="assets\images\slider\slide-1-480w.jpg" />
+    <Content Include="assets\images\slider\slide-1.jpg" />
+    <Content Include="assets\images\slider\slide-2-480w.jpg" />
+    <Content Include="assets\images\slider\slide-2.jpg" />
+    <Content Include="assets\images\slider\slide-3-480w.jpg" />
+    <Content Include="assets\images\slider\slide-3.jpg" />
+    <Content Include="assets\images\stores\img-1.jpg" />
+    <Content Include="assets\images\stores\img-2.jpg" />
+    <Content Include="assets\images\team\about-2\member-1.jpg" />
+    <Content Include="assets\images\team\about-2\member-2.jpg" />
+    <Content Include="assets\images\team\about-2\member-3.jpg" />
+    <Content Include="assets\images\team\about-2\member-4.jpg" />
+    <Content Include="assets\images\team\about-2\member-5.jpg" />
+    <Content Include="assets\images\team\about-2\member-6.jpg" />
+    <Content Include="assets\images\team\about-2\member-7.jpg" />
+    <Content Include="assets\images\team\about-2\member-8.jpg" />
+    <Content Include="assets\images\team\member-1.jpg" />
+    <Content Include="assets\images\team\member-2.jpg" />
+    <Content Include="assets\images\team\member-3.jpg" />
+    <Content Include="assets\images\testimonials\user-1.jpg" />
+    <Content Include="assets\images\testimonials\user-2.jpg" />
+    <Content Include="assets\images\video\bg-1.jpg" />
+    <Content Include="assets\images\video\bg-2.jpg" />
+    <Content Include="assets\images\video\poster-1.jpg" />
+    <Content Include="assets\images\video\poster-2.jpg" />
+    <Content Include="assets\images\video\poster-3.jpg" />
+    <Content Include="assets\js\bootstrap-input-spinner.js" />
+    <Content Include="assets\js\bootstrap.bundle.min.js" />
+    <Content Include="assets\js\demos\demo-10.js" />
+    <Content Include="assets\js\demos\demo-11.js" />
+    <Content Include="assets\js\demos\demo-12.js" />
+    <Content Include="assets\js\demos\demo-13.js" />
+    <Content Include="assets\js\demos\demo-14.js" />
+    <Content Include="assets\js\demos\demo-15.js" />
+    <Content Include="assets\js\demos\demo-16.js" />
+    <Content Include="assets\js\demos\demo-17.js" />
+    <Content Include="assets\js\demos\demo-18.js" />
+    <Content Include="assets\js\demos\demo-19.js" />
+    <Content Include="assets\js\demos\demo-2.js" />
+    <Content Include="assets\js\demos\demo-20.js" />
+    <Content Include="assets\js\demos\demo-21.js" />
+    <Content Include="assets\js\demos\demo-24.js" />
+    <Content Include="assets\js\demos\demo-3.js" />
+    <Content Include="assets\js\demos\demo-4.js" />
+    <Content Include="assets\js\demos\demo-5.js" />
+    <Content Include="assets\js\demos\demo-6.js" />
+    <Content Include="assets\js\demos\demo-7.js" />
+    <Content Include="assets\js\demos\demo-8.js" />
+    <Content Include="assets\js\demos\demo-9.js" />
+    <Content Include="assets\js\imagesloaded.pkgd.min.js" />
+    <Content Include="assets\js\isotope.pkgd.min.js" />
+    <Content Include="assets\js\jquery.countdown.min.js" />
+    <Content Include="assets\js\jquery.countTo.js" />
+    <Content Include="assets\js\jquery.elevateZoom.min.js" />
+    <Content Include="assets\js\jquery.hoverIntent.min.js" />
+    <Content Include="assets\js\jquery.magnific-popup.min.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\jquery.plugin.min.js" />
+    <Content Include="assets\js\jquery.sticky-kit.min.js" />
+    <Content Include="assets\js\jquery.waypoints.min.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\nouislider.min.js" />
+    <Content Include="assets\js\owl.carousel.min.js" />
+    <Content Include="assets\js\superfish.min.js" />
+    <Content Include="assets\js\wNumb.js" />
+    <Content Include="assets\main.js" />
+    <Content Include="assets\img\avatars\1.png" />
+    <Content Include="assets\img\avatars\5.png" />
+    <Content Include="assets\img\avatars\6.png" />
+    <Content Include="assets\img\avatars\7.png" />
+    <Content Include="assets\img\backgrounds\18.jpg" />
+    <Content Include="assets\img\elements\1.jpg" />
+    <Content Include="assets\img\elements\11.jpg" />
+    <Content Include="assets\img\elements\12.jpg" />
+    <Content Include="assets\img\elements\13.jpg" />
+    <Content Include="assets\img\elements\17.jpg" />
+    <Content Include="assets\img\elements\18.jpg" />
+    <Content Include="assets\img\elements\19.jpg" />
+    <Content Include="assets\img\elements\2.jpg" />
+    <Content Include="assets\img\elements\20.jpg" />
+    <Content Include="assets\img\elements\3.jpg" />
+    <Content Include="assets\img\elements\4.jpg" />
+    <Content Include="assets\img\elements\5.jpg" />
+    <Content Include="assets\img\elements\7.jpg" />
+    <Content Include="assets\img\favicon\favicon.ico" />
+    <Content Include="assets\img\icons\brands\asana.png" />
+    <Content Include="assets\img\icons\brands\behance.png" />
+    <Content Include="assets\img\icons\brands\dribbble.png" />
+    <Content Include="assets\img\icons\brands\facebook.png" />
+    <Content Include="assets\img\icons\brands\github.png" />
+    <Content Include="assets\img\icons\brands\google.png" />
+    <Content Include="assets\img\icons\brands\instagram.png" />
+    <Content Include="assets\img\icons\brands\mailchimp.png" />
+    <Content Include="assets\img\icons\brands\slack.png" />
+    <Content Include="assets\img\icons\brands\twitter.png" />
+    <Content Include="assets\img\icons\unicons\cc-primary.png" />
+    <Content Include="assets\img\icons\unicons\cc-success.png" />
+    <Content Include="assets\img\icons\unicons\cc-warning.png" />
+    <Content Include="assets\img\icons\unicons\chart-success.png" />
+    <Content Include="assets\img\icons\unicons\chart.png" />
+    <Content Include="assets\img\icons\unicons\paypal.png" />
+    <Content Include="assets\img\icons\unicons\wallet-info.png" />
+    <Content Include="assets\img\icons\unicons\wallet.png" />
+    <Content Include="assets\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="assets\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="assets\img\illustrations\page-misc-error-light.png" />
+    <Content Include="assets\img\layouts\layout-container-light.png" />
+    <Content Include="assets\img\layouts\layout-fluid-light.png" />
+    <Content Include="assets\img\layouts\layout-without-menu-light.png" />
+    <Content Include="assets\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="CA\assets\css\demo.css" />
+    <Content Include="CA\assets\img\avatars\1.png" />
+    <Content Include="CA\assets\img\avatars\5.png" />
+    <Content Include="CA\assets\img\avatars\6.png" />
+    <Content Include="CA\assets\img\avatars\7.png" />
+    <Content Include="CA\assets\img\backgrounds\18.jpg" />
+    <Content Include="CA\assets\img\elements\1.jpg" />
+    <Content Include="CA\assets\img\elements\11.jpg" />
+    <Content Include="CA\assets\img\elements\12.jpg" />
+    <Content Include="CA\assets\img\elements\13.jpg" />
+    <Content Include="CA\assets\img\elements\17.jpg" />
+    <Content Include="CA\assets\img\elements\18.jpg" />
+    <Content Include="CA\assets\img\elements\19.jpg" />
+    <Content Include="CA\assets\img\elements\2.jpg" />
+    <Content Include="CA\assets\img\elements\20.jpg" />
+    <Content Include="CA\assets\img\elements\3.jpg" />
+    <Content Include="CA\assets\img\elements\4.jpg" />
+    <Content Include="CA\assets\img\elements\5.jpg" />
+    <Content Include="CA\assets\img\elements\7.jpg" />
+    <Content Include="CA\assets\img\favicon\favicon.ico" />
+    <Content Include="CA\assets\img\icons\brands\asana.png" />
+    <Content Include="CA\assets\img\icons\brands\behance.png" />
+    <Content Include="CA\assets\img\icons\brands\dribbble.png" />
+    <Content Include="CA\assets\img\icons\brands\facebook.png" />
+    <Content Include="CA\assets\img\icons\brands\github.png" />
+    <Content Include="CA\assets\img\icons\brands\google.png" />
+    <Content Include="CA\assets\img\icons\brands\instagram.png" />
+    <Content Include="CA\assets\img\icons\brands\mailchimp.png" />
+    <Content Include="CA\assets\img\icons\brands\slack.png" />
+    <Content Include="CA\assets\img\icons\brands\twitter.png" />
+    <Content Include="CA\assets\img\icons\unicons\cc-primary.png" />
+    <Content Include="CA\assets\img\icons\unicons\cc-success.png" />
+    <Content Include="CA\assets\img\icons\unicons\cc-warning.png" />
+    <Content Include="CA\assets\img\icons\unicons\chart-success.png" />
+    <Content Include="CA\assets\img\icons\unicons\chart.png" />
+    <Content Include="CA\assets\img\icons\unicons\paypal.png" />
+    <Content Include="CA\assets\img\icons\unicons\wallet-info.png" />
+    <Content Include="CA\assets\img\icons\unicons\wallet.png" />
+    <Content Include="CA\assets\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="CA\assets\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="CA\assets\img\illustrations\page-misc-error-light.png" />
+    <Content Include="CA\assets\img\layouts\layout-container-light.png" />
+    <Content Include="CA\assets\img\layouts\layout-fluid-light.png" />
+    <Content Include="CA\assets\img\layouts\layout-without-menu-light.png" />
+    <Content Include="CA\assets\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="CA\assets\js\config.js" />
+    <Content Include="CA\assets\js\dashboards-analytics.js" />
+    <Content Include="CA\assets\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="CA\assets\js\form-basic-inputs.js" />
+    <Content Include="CA\assets\js\main.js" />
+    <Content Include="CA\assets\js\pages-account-settings-account.js" />
+    <Content Include="CA\assets\js\ui-modals.js" />
+    <Content Include="CA\assets\js\ui-popover.js" />
+    <Content Include="CA\assets\js\ui-toasts.js" />
+    <Content Include="CA\assets\vendor\css\core.css" />
+    <Content Include="CA\assets\vendor\css\pages\page-account-settings.css" />
+    <Content Include="CA\assets\vendor\css\pages\page-auth.css" />
+    <Content Include="CA\assets\vendor\css\pages\page-icons.css" />
+    <Content Include="CA\assets\vendor\css\pages\page-misc.css" />
+    <Content Include="CA\assets\vendor\css\theme-default.css" />
+    <Content Include="CA\assets\vendor\fonts\boxicons.css" />
+    <Content Include="CA\assets\vendor\fonts\boxicons\boxicons.svg" />
+    <Content Include="CA\assets\vendor\js\bootstrap.js" />
+    <Content Include="CA\assets\vendor\js\helpers.js" />
+    <Content Include="CA\assets\vendor\js\menu.js" />
+    <Content Include="CA\assets\vendor\libs\apex-charts\apex-charts.css" />
+    <Content Include="CA\assets\vendor\libs\apex-charts\apexcharts.js" />
+    <Content Include="CA\assets\vendor\libs\highlight\highlight-github.css" />
+    <Content Include="CA\assets\vendor\libs\highlight\highlight.css" />
+    <Content Include="CA\assets\vendor\libs\highlight\highlight.js" />
+    <Content Include="CA\assets\vendor\libs\jquery\jquery.js" />
+    <Content Include="CA\assets\vendor\libs\masonry\masonry.js" />
+    <Content Include="CA\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="CA\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="CA\assets\vendor\libs\popper\popper.js" />
+    <Content Include="CA\dist\all.css" />
+    <Content Include="CA\dist\images\dashboard.png" />
+    <Content Include="CA\dist\images\login-new.jpeg" />
+    <Content Include="CA\dist\images\login.jpeg" />
+    <Content Include="CA\dist\images\login.png" />
+    <Content Include="CA\dist\styles.css" />
+    <Content Include="css\all.css" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\aos.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\flaticon.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\lightslider.min.css" />
+    <Content Include="css\magnific-popup.css" />
+    <Content Include="css\nice-select.css" />
+    <Content Include="css\owl.carousel.min.css" />
+    <Content Include="css\price_rangs.css" />
+    <Content Include="css\slick-theme.min.css" />
+    <Content Include="css\slick.css" />
+    <Content Include="css\slick.min.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\swiper.min.css" />
+    <Content Include="css\themify-icons.css" />
+    <Content Include="cusimages\avatar.png" />
+    <Content Include="cusimages\avatarmujer.png" />
+    <Content Include="cusimages\glasses.png" />
+    <Content Include="Default_Spanish.aspx" />
+    <Content Include="dist\all.css" />
+    <Content Include="dist\images\dashboard.png" />
+    <Content Include="dist\images\login-new.jpeg" />
+    <Content Include="dist\images\login.jpeg" />
+    <Content Include="dist\images\login.png" />
+    <Content Include="dist\styles.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\themify.svg" />
+    <Content Include="images\Anotación 2024-07-11 005639.png" />
+    <Content Include="images\avatar.png" />
+    <Content Include="images\bracelets.png" />
+    <Content Include="images\Camisa.jpeg" />
+    <Content Include="images\camisa.png" />
+    <Content Include="images\computer.png" />
+    <Content Include="images\earrings.png" />
+    <Content Include="images\hat.png" />
+    <Content Include="images\headphones.png" />
+    <Content Include="images\imagen2.jpg" />
+    <Content Include="images\imagen7.jpg" />
+    <Content Include="images\pajamas.png" />
+    <Content Include="images\pants.png" />
+    <Content Include="images\ring.png" />
+    <Content Include="images\Screenshot_8.png" />
+    <Content Include="images\Screenshot_9.png" />
+    <Content Include="images\shoes.png" />
+    <Content Include="images\socks.png" />
+    <Content Include="images\suit.png" />
+    <Content Include="images\taza.png" />
+    <Content Include="img\....jfif" />
+    <Content Include="img\about_img_1.png" />
+    <Content Include="img\about_img_2.png" />
+    <Content Include="img\about_img_2_2.png" />
+    <Content Include="img\about_us_video.png" />
+    <Content Include="img\descarga.jfif" />
+    <Content Include="img\arrivel\arrivel_1.png" />
+    <Content Include="img\arrivel\arrivel_2.png" />
+    <Content Include="img\arrivel\arrivel_3.png" />
+    <Content Include="img\arrivel\arrivel_4.png" />
+    <Content Include="img\arrivel\arrivel_5.png" />
+    <Content Include="img\arrivel\arrivel_6.png" />
+    <Content Include="img\author\author_1.png" />
+    <Content Include="img\author\author_2.png" />
+    <Content Include="img\author\author_3.png" />
+    <Content Include="img\b1.jpg" />
+    <Content Include="img\b2.jpg" />
+    <Content Include="img\b3.jpg" />
+    <Content Include="img\banner.png" />
+    <Content Include="img\banner_img.png" />
+    <Content Include="img\banner_pattern.png" />
+    <Content Include="img\banner_shape.png" />
+    <Content Include="img\blog\add.jpg" />
+    <Content Include="img\blog\author.png" />
+    <Content Include="img\blog\blog1.png" />
+    <Content Include="img\blog\blog2.png" />
+    <Content Include="img\blog\blog3.png" />
+    <Content Include="img\blog\blog_1.png" />
+    <Content Include="img\blog\blog_2.png" />
+    <Content Include="img\blog\blog_3.png" />
+    <Content Include="img\blog\blog_4.png" />
+    <Content Include="img\blog\c1.png" />
+    <Content Include="img\blog\c2.png" />
+    <Content Include="img\blog\c3.png" />
+    <Content Include="img\blog\cat-post\cat-post-1.jpg" />
+    <Content Include="img\blog\cat-post\cat-post-2.jpg" />
+    <Content Include="img\blog\cat-post\cat-post-3.jpg" />
+    <Content Include="img\blog\causes\causes-1.jpg" />
+    <Content Include="img\blog\causes\causes-2.jpg" />
+    <Content Include="img\blog\causes\causes-3.jpg" />
+    <Content Include="img\blog\feature-img1.jpg" />
+    <Content Include="img\blog\learn_about_bg.png" />
+    <Content Include="img\blog\main-blog\m-blog-1.jpg" />
+    <Content Include="img\blog\main-blog\m-blog-2.jpg" />
+    <Content Include="img\blog\main-blog\m-blog-3.jpg" />
+    <Content Include="img\blog\main-blog\m-blog-4.jpg" />
+    <Content Include="img\blog\main-blog\m-blog-5.jpg" />
+    <Content Include="img\blog\next.jpg" />
+    <Content Include="img\blog\popular-post\post1.jpg" />
+    <Content Include="img\blog\popular-post\post2.jpg" />
+    <Content Include="img\blog\popular-post\post3.jpg" />
+    <Content Include="img\blog\popular-post\post4.jpg" />
+    <Content Include="img\blog\post-img1.jpg" />
+    <Content Include="img\blog\post-img2.jpg" />
+    <Content Include="img\blog\prev.jpg" />
+    <Content Include="img\blog\single_blog_1.png" />
+    <Content Include="img\blog\single_blog_2.png" />
+    <Content Include="img\blog\single_blog_3.png" />
+    <Content Include="img\blog\single_blog_4.png" />
+    <Content Include="img\blog\single_blog_5.png" />
+    <Content Include="img\blog\slide_thumb_1.png" />
+    <Content Include="img\bracelets.png" />
+    <Content Include="img\C-A.png" />
+    <Content Include="img\camisa.png" />
+    <Content Include="img\Camisaroja.png" />
+    <Content Include="img\category\category_1.png" />
+    <Content Include="img\category\category_10.png" />
+    <Content Include="img\category\category_11.png" />
+    <Content Include="img\category\category_12.png" />
+    <Content Include="img\category\category_2.png" />
+    <Content Include="img\category\category_3.png" />
+    <Content Include="img\category\category_4.png" />
+    <Content Include="img\category\category_5.png" />
+    <Content Include="img\category\category_6.png" />
+    <Content Include="img\category\category_7.png" />
+    <Content Include="img\category\category_8.png" />
+    <Content Include="img\category\category_9.png" />
+    <Content Include="img\checkout.png" />
+    <Content Include="img\client.png" />
+    <Content Include="img\client_1.png" />
+    <Content Include="img\client_2.png" />
+    <Content Include="img\comment\comment_1.png" />
+    <Content Include="img\comment\comment_2.png" />
+    <Content Include="img\comment\comment_3.png" />
+    <Content Include="img\cups.png" />
+    <Content Include="img\customize-art.png" />
+    <Content Include="img\elements\a.jpg" />
+    <Content Include="img\elements\a2.jpg" />
+    <Content Include="img\elements\d.jpg" />
+    <Content Include="img\elements\disabled-check.png" />
+    <Content Include="img\elements\disabled-radio.png" />
+    <Content Include="img\elements\f1.jpg" />
+    <Content Include="img\elements\f2.jpg" />
+    <Content Include="img\elements\f3.jpg" />
+    <Content Include="img\elements\f4.jpg" />
+    <Content Include="img\elements\f5.jpg" />
+    <Content Include="img\elements\f6.jpg" />
+    <Content Include="img\elements\f7.jpg" />
+    <Content Include="img\elements\f8.jpg" />
+    <Content Include="img\elements\g1.jpg" />
+    <Content Include="img\elements\g2.jpg" />
+    <Content Include="img\elements\g3.jpg" />
+    <Content Include="img\elements\g4.jpg" />
+    <Content Include="img\elements\g5.jpg" />
+    <Content Include="img\elements\g6.jpg" />
+    <Content Include="img\elements\g7.jpg" />
+    <Content Include="img\elements\g8.jpg" />
+    <Content Include="img\elements\primary-check.png" />
+    <Content Include="img\elements\primary-radio.png" />
+    <Content Include="img\elements\success-check.png" />
+    <Content Include="img\elements\success-radio.png" />
+    <Content Include="img\elements\user1.png" />
+    <Content Include="img\elements\user2.png" />
+    <Content Include="img\favicon.png" />
+    <Content Include="img\feature_1.png" />
+    <Content Include="img\feature_2.png" />
+    <Content Include="img\feature_3.png" />
+    <Content Include="img\hdp.png" />
+    <Content Include="img\headphones.png" />
+    <Content Include="img\hola..jpg" />
+    <Content Include="img\icon\color_star.svg" />
+    <Content Include="img\icon\feature_icon_1.png" />
+    <Content Include="img\icon\feature_icon_1.svg" />
+    <Content Include="img\icon\feature_icon_2.png" />
+    <Content Include="img\icon\feature_icon_2.svg" />
+    <Content Include="img\icon\feature_icon_3.png" />
+    <Content Include="img\icon\feature_icon_3.svg" />
+    <Content Include="img\icon\feature_icon_4.svg" />
+    <Content Include="img\icon\icon_1.png" />
+    <Content Include="img\icon\icon_2.png" />
+    <Content Include="img\icon\icon_3.png" />
+    <Content Include="img\icon\icon_4.png" />
+    <Content Include="img\icon\left.svg" />
+    <Content Include="img\icon\play.svg" />
+    <Content Include="img\icon\quate.svg" />
+    <Content Include="img\icon\right-arrow.svg" />
+    <Content Include="img\icon\right.svg" />
+    <Content Include="img\icon\star.svg" />
+    <Content Include="img\login.jpg" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\logo2.png" />
+    <Content Include="img\mast.png" />
+    <Content Include="img\messi.png" />
+    <Content Include="img\offer-bg.png" />
+    <Content Include="img\mug.png" />
+    <Content Include="img\post\next.png" />
+    <Content Include="img\post\post_1.png" />
+    <Content Include="img\post\post_10.png" />
+    <Content Include="img\post\post_2.png" />
+    <Content Include="img\post\post_3.png" />
+    <Content Include="img\post\post_4.png" />
+    <Content Include="img\post\post_5.png" />
+    <Content Include="img\post\post_6.png" />
+    <Content Include="img\post\post_7.png" />
+    <Content Include="img\post\post_8.png" />
+    <Content Include="img\post\post_9.png" />
+    <Content Include="img\post\preview.png" />
+    <Content Include="img\product\aritos.png" />
+    <Content Include="img\product\belts.png" />
+    <Content Include="img\product\bermudas.png" />
+    <Content Include="img\product\billeteras.png" />
+    <Content Include="img\product\bolsos.png" />
+    <Content Include="img\product\cap_red.png" />
+    <Content Include="img\product\charger.png" />
+    <Content Include="img\product\gloves1.png" />
+    <Content Include="img\product\hat.png" />
+    <Content Include="img\product\headphones2.png" />
+    <Content Include="img\product\headphones3.png" />
+    <Content Include="img\product\hoodie_black.png" />
+    <Content Include="img\product\pajama1.png" />
+    <Content Include="img\product\pantalon.png" />
+    <Content Include="img\product\panuelos.png" />
+    <Content Include="img\product\product_list_1.png" />
+    <Content Include="img\product\product_list_10.png" />
+    <Content Include="img\product\product_list_2.png" />
+    <Content Include="img\product\product_list_3.png" />
+    <Content Include="img\product\product_list_4.png" />
+    <Content Include="img\product\product_list_5.png" />
+    <Content Include="img\product\product_list_6.png" />
+    <Content Include="img\product\product_list_7.png" />
+    <Content Include="img\product\product_list_8.png" />
+    <Content Include="img\product\product_list_9.png" />
+    <Content Include="img\product\shoes1.png" />
+    <Content Include="img\product\single_product.png" />
+    <Content Include="img\product\socks.png" />
+    <Content Include="img\product\sunglasses.png" />
+    <Content Include="img\product\t-shirt_white.png" />
+    <Content Include="img\product\tapacamara.png" />
+    <Content Include="img\product\ties.png" />
+    <Content Include="img\product_details\prodect_details_1.png" />
+    <Content Include="img\product_details\prodect_details_2.png" />
+    <Content Include="img\product_details\prodect_details_3.png" />
+    <Content Include="img\product_details\prodect_details_4.png" />
+    <Content Include="img\product_overlay.png" />
+    <Content Include="img\pulseras.png" />
+    <Content Include="img\shirts.png" />
+    <Content Include="img\single_product_1.png" />
+    <Content Include="img\single_product_2.png" />
+    <Content Include="img\single_product_3.png" />
+    <Content Include="img\slv.jfif" />
+    <Content Include="img\TAZA.png" />
+    <Content Include="img\Tazaa.png" />
+    <Content Include="img\Tazita.png" />
+    <Content Include="img\time_line_1.png" />
+    <Content Include="img\tranding_item\tranding_item_1.png" />
+    <Content Include="img\tranding_item\tranding_item_2.png" />
+    <Content Include="img\tranding_item\tranding_item_3.png" />
+    <Content Include="img\tranding_item\tranding_item_4.png" />
+    <Content Include="img\tranding_item\tranding_item_5.png" />
+    <Content Include="img\tranding_item\tranding_item_6.png" />
+    <Content Include="img\tshirt-male.png" />
+    <Content Include="img\verde.jpg" />
+    <Content Include="img\Wallet.jfif" />
+    <Content Include="img\wallet.png" />
+    <Content Include="Default.aspx" />
+    <Content Include="js\aos.js" />
+    <Content Include="js\bootstrap.bundle.js" />
+    <Content Include="js\bootstrap.bundle.min.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\cells-by-column.js" />
+    <Content Include="js\contact.js" />
+    <Content Include="js\custom.js" />
+    <Content Include="js\gmaps.min.js" />
+    <Content Include="js\jquery-1.12.1.min.js" />
+    <Content Include="js\jquery.ajaxchimp.min.js" />
+    <Content Include="js\jquery.counterup.min.js" />
+    <Content Include="js\jquery.downCount.js" />
+    <Content Include="js\jquery.easing.min.js" />
+    <Content Include="js\jquery.form.js" />
+    <Content Include="js\jquery.magnific-popup.js" />
+    <Content Include="js\jquery.nice-select.min.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\js\config.js" />
+    <Content Include="js\js\dashboards-analytics.js" />
+    <Content Include="js\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="js\js\form-basic-inputs.js" />
+    <Content Include="js\js\main.js" />
+    <Content Include="js\js\pages-account-settings-account.js" />
+    <Content Include="js\js\ui-modals.js" />
+    <Content Include="js\js\ui-popover.js" />
+    <Content Include="js\js\ui-toasts.js" />
+    <Content Include="js\lightslider.min.js" />
+    <Content Include="js\mail-script.js" />
+    <Content Include="js\mixitup.min.js" />
+    <Content Include="js\owl.carousel.min.js" />
+    <Content Include="js\popper.min.js" />
+    <Content Include="js\price_rangs.js" />
+    <Content Include="js\slick.min.js" />
+    <Content Include="js\stellar.js" />
+    <Content Include="js\swiper.jquery.js" />
+    <Content Include="js\swiper.min.js" />
+    <Content Include="js\swiper_custom.js" />
+    <Content Include="js\theme.js" />
+    <Content Include="js\waypoints.min.js" />
+    <Content Include="libs\apex-charts\apexcharts.js" />
+    <Content Include="libs\highlight\highlight.js" />
+    <Content Include="libs\jquery\jquery.js" />
+    <Content Include="libs\masonry\masonry.js" />
+    <Content Include="libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="libs\popper\popper.js" />
+    <Content Include="shop_doc\css\font-awesome.min.css" />
+    <Content Include="shop_doc\css\main.css" />
+    <Content Include="shop_doc\css\normalize.min.css" />
+    <Content Include="shop_doc\fonts\fontawesome-webfont.svg" />
+    <Content Include="shop_doc\img\logo.png" />
+    <Content Include="shop_doc\index.html" />
+    <Content Include="shop_doc\js\custom.js" />
+    <Content Include="shop_doc\js\jquery-1.11.0.min.js" />
+    <Content Include="shop_doc\js\jquery.nav.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shAutoloader.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushAppleScript.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushAS3.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushBash.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushColdFusion.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushCpp.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushCSharp.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushCss.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushDelphi.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushDiff.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushErlang.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushGroovy.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushJava.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushJavaFX.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushJScript.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushPerl.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushPhp.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushPlain.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushPowerShell.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushPython.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushRuby.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushSass.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushScala.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushSql.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushVb.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shBrushXml.js" />
+    <Content Include="shop_doc\syntax-highlighter\scripts\shLegacy.js" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shCore.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shCoreDefault.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shCoreDjango.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shCoreEclipse.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shCoreEmacs.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shCoreFadeToGrey.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shCoreMDUltra.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shCoreMidnight.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shCoreRDark.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shThemeDefault.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shThemeDjango.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shThemeEclipse.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shThemeEmacs.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shThemeFadeToGrey.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shThemeMDUltra.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shThemeMidnight.css" />
+    <Content Include="shop_doc\syntax-highlighter\styles\shThemeRDark.css" />
+    <Content Include="src\chart.js" />
+    <Content Include="src\graph.js" />
+    <Content Include="src\jquery-3.3.1.min.js" />
+    <Content Include="src\styles.css" />
+    <Content Include="students\01_student.png" />
+    <Content Include="students\02_student.png" />
+    <Content Include="students\03_student.png" />
+    <Content Include="students\04_student.png" />
+    <Content Include="SweetAlert\sweetalert2.all.min.js" />
+    <Content Include="SweetAlert\sweetalert2.js" />
+    <Content Include="assets\vendor\line-awesome\line-awesome\line-awesome\css\line-awesome.min.css" />
+    <Content Include="assets\vendor\line-awesome\line-awesome\line-awesome\fonts\line-awesomeeb4f.svg" />
+    <Content Include="lib\bootstrap\bootstrap.min.css" />
+    <Content Include="lib\isotope\jquery.isotope.min.js" />
+    <Content Include="lib\jquery.appear\jquery.appear.min.js" />
+    <Content Include="lib\jquery.lazyload\jquery.lazyload.min.js" />
+    <Content Include="lib\jquery\jquery.min.js" />
+    <Content Include="popup\quickView.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="01_ES_Login.aspx.cs">
+      <DependentUpon>01_ES_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01_ES_Login.aspx.designer.cs">
+      <DependentUpon>01_ES_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="01_Login.aspx.cs">
+      <DependentUpon>01_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01_Login.aspx.designer.cs">
+      <DependentUpon>01_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_ES_Products.aspx.cs">
+      <DependentUpon>02_ES_Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_ES_Products.aspx.designer.cs">
+      <DependentUpon>02_ES_Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_ES_Clothes.aspx.cs">
+      <DependentUpon>03_ES_Clothes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_ES_Clothes.aspx.designer.cs">
+      <DependentUpon>03_ES_Clothes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ES_Accesories.aspx.cs">
+      <DependentUpon>04_ES_Accesories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ES_Accesories.aspx.designer.cs">
+      <DependentUpon>04_ES_Accesories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_ES_Technology.aspx.cs">
+      <DependentUpon>05_ES_Technology.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_ES_Technology.aspx.designer.cs">
+      <DependentUpon>05_ES_Technology.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="06_ES_Addtocart.aspx.cs">
+      <DependentUpon>06_ES_Addtocart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="06_ES_Addtocart.aspx.designer.cs">
+      <DependentUpon>06_ES_Addtocart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="07_ES_Shoppingcart.aspx.cs">
+      <DependentUpon>07_ES_Shoppingcart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="07_ES_Shoppingcart.aspx.designer.cs">
+      <DependentUpon>07_ES_Shoppingcart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_ES_prueba.aspx.cs">
+      <DependentUpon>08_ES_prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_ES_prueba.aspx.designer.cs">
+      <DependentUpon>08_ES_prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_ES_About_Us.aspx.cs">
+      <DependentUpon>09_ES_About_Us.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_ES_About_Us.aspx.designer.cs">
+      <DependentUpon>09_ES_About_Us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_ES_forgotpassword.aspx.cs">
+      <DependentUpon>10_ES_forgotpassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_ES_forgotpassword.aspx.designer.cs">
+      <DependentUpon>10_ES_forgotpassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_ES_Token.aspx.cs">
+      <DependentUpon>11_ES_Token.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_ES_Token.aspx.designer.cs">
+      <DependentUpon>11_ES_Token.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_ES_Changepassword.aspx.cs">
+      <DependentUpon>12_ES_Changepassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_ES_Changepassword.aspx.designer.cs">
+      <DependentUpon>12_ES_Changepassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_Account.aspx.cs">
+      <DependentUpon>13_Account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_Account.aspx.designer.cs">
+      <DependentUpon>13_Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Products.aspx.cs">
+      <DependentUpon>02_Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Products.aspx.designer.cs">
+      <DependentUpon>02_Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_Clothes.aspx.cs">
+      <DependentUpon>03_Clothes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_Clothes.aspx.designer.cs">
+      <DependentUpon>03_Clothes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_Accesories.aspx.cs">
+      <DependentUpon>04_Accesories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_Accesories.aspx.designer.cs">
+      <DependentUpon>04_Accesories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_Technology.aspx.cs">
+      <DependentUpon>05_Technology.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_Technology.aspx.designer.cs">
+      <DependentUpon>05_Technology.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="06_Addtocart.aspx.cs">
+      <DependentUpon>06_Addtocart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="06_Addtocart.aspx.designer.cs">
+      <DependentUpon>06_Addtocart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="07_Shoppingcart.aspx.cs">
+      <DependentUpon>07_Shoppingcart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="07_Shoppingcart.aspx.designer.cs">
+      <DependentUpon>07_Shoppingcart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_prueba.aspx.cs">
+      <DependentUpon>08_prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_prueba.aspx.designer.cs">
+      <DependentUpon>08_prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_About_Us.aspx.cs">
+      <DependentUpon>09_About_Us.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_About_Us.aspx.designer.cs">
+      <DependentUpon>09_About_Us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_forgotpassword.aspx.cs">
+      <DependentUpon>10_forgotpassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_forgotpassword.aspx.designer.cs">
+      <DependentUpon>10_forgotpassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_Token.aspx.cs">
+      <DependentUpon>11_Token.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_Token.aspx.designer.cs">
+      <DependentUpon>11_Token.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_Changepassword.aspx.cs">
+      <DependentUpon>12_Changepassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_Changepassword.aspx.designer.cs">
+      <DependentUpon>12_Changepassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_ES_Account.aspx.cs">
+      <DependentUpon>13_ES_Account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_ES_Account.aspx.designer.cs">
+      <DependentUpon>13_ES_Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="14_Deletefromcart.aspx.cs">
+      <DependentUpon>14_Deletefromcart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="14_Deletefromcart.aspx.designer.cs">
+      <DependentUpon>14_Deletefromcart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="14_ES_Deletefromcart.aspx.cs">
+      <DependentUpon>14_ES_Deletefromcart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="14_ES_Deletefromcart.aspx.designer.cs">
+      <DependentUpon>14_ES_Deletefromcart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_Crud.aspx.cs">
+      <DependentUpon>21_Crud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_Crud.aspx.designer.cs">
+      <DependentUpon>21_Crud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_ES_Crud.aspx.cs">
+      <DependentUpon>21_ES_Crud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_ES_Crud.aspx.designer.cs">
+      <DependentUpon>21_ES_Crud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_Crud_Products.aspx.cs">
+      <DependentUpon>22_Crud_Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_Crud_Products.aspx.designer.cs">
+      <DependentUpon>22_Crud_Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_ES_Crud_Products.aspx.cs">
+      <DependentUpon>22_ES_Crud_Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_ES_Crud_Products.aspx.designer.cs">
+      <DependentUpon>22_ES_Crud_Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_Create.aspx.cs">
+      <DependentUpon>23_Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_Create.aspx.designer.cs">
+      <DependentUpon>23_Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_ES_Create.aspx.cs">
+      <DependentUpon>23_ES_Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_ES_Create.aspx.designer.cs">
+      <DependentUpon>23_ES_Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_ES_Update.aspx.cs">
+      <DependentUpon>24_ES_Update.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_ES_Update.aspx.designer.cs">
+      <DependentUpon>24_ES_Update.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_Update.aspx.cs">
+      <DependentUpon>24_Update.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_Update.aspx.designer.cs">
+      <DependentUpon>24_Update.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="25_Delete.aspx.cs">
+      <DependentUpon>25_Delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_Delete.aspx.designer.cs">
+      <DependentUpon>25_Delete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="25_ES_Delete.aspx.cs">
+      <DependentUpon>25_ES_Delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_ES_Delete.aspx.designer.cs">
+      <DependentUpon>25_ES_Delete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_Add_image.aspx.cs">
+      <DependentUpon>26_Add_image.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_Add_image.aspx.designer.cs">
+      <DependentUpon>26_Add_image.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_ES_Add_image.aspx.cs">
+      <DependentUpon>26_ES_Add_image.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_ES_Add_image.aspx.designer.cs">
+      <DependentUpon>26_ES_Add_image.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="27_Addimage_Default.aspx.cs">
+      <DependentUpon>27_Addimage_Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="27_Addimage_Default.aspx.designer.cs">
+      <DependentUpon>27_Addimage_Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="27_ES_Addimage_Default.aspx.cs">
+      <DependentUpon>27_ES_Addimage_Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="27_ES_Addimage_Default.aspx.designer.cs">
+      <DependentUpon>27_ES_Addimage_Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="28_ES_Sales.aspx.cs">
+      <DependentUpon>28_ES_Sales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="28_ES_Sales.aspx.designer.cs">
+      <DependentUpon>28_ES_Sales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="28_Sales.aspx.cs">
+      <DependentUpon>28_Sales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="28_Sales.aspx.designer.cs">
+      <DependentUpon>28_Sales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="29_ES_Sellerview.aspx.cs">
+      <DependentUpon>29_ES_Sellerview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="29_ES_Sellerview.aspx.designer.cs">
+      <DependentUpon>29_ES_Sellerview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="29_Sellerview.aspx.cs">
+      <DependentUpon>29_Sellerview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="29_Sellerview.aspx.designer.cs">
+      <DependentUpon>29_Sellerview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="30_ES_Update_seller.aspx.cs">
+      <DependentUpon>30_ES_Update_seller.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="30_ES_Update_seller.aspx.designer.cs">
+      <DependentUpon>30_ES_Update_seller.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="30_Update_seller.aspx.cs">
+      <DependentUpon>30_Update_seller.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="30_Update_seller.aspx.designer.cs">
+      <DependentUpon>30_Update_seller.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="31_ES_Salesseller.aspx.cs">
+      <DependentUpon>31_ES_Salesseller.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="31_ES_Salesseller.aspx.designer.cs">
+      <DependentUpon>31_ES_Salesseller.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="31_Salesseller.aspx.cs">
+      <DependentUpon>31_Salesseller.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="31_Salesseller.aspx.designer.cs">
+      <DependentUpon>31_Salesseller.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="32_ES_Update_image.aspx.cs">
+      <DependentUpon>32_ES_Update_image.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="32_ES_Update_image.aspx.designer.cs">
+      <DependentUpon>32_ES_Update_image.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="32_Update_image.aspx.cs">
+      <DependentUpon>32_Update_image.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="32_Update_image.aspx.designer.cs">
+      <DependentUpon>32_Update_image.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="33_CheckOut.aspx.cs">
+      <DependentUpon>33_CheckOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="33_CheckOut.aspx.designer.cs">
+      <DependentUpon>33_CheckOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="33_ES_CheckOut.aspx.cs">
+      <DependentUpon>33_ES_CheckOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="33_ES_CheckOut.aspx.designer.cs">
+      <DependentUpon>33_ES_CheckOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="34_ES_Token-Compra.aspx.cs">
+      <DependentUpon>34_ES_Token-Compra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="34_ES_Token-Compra.aspx.designer.cs">
+      <DependentUpon>34_ES_Token-Compra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="34_Token-Compra.aspx.cs">
+      <DependentUpon>34_Token-Compra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="34_Token-Compra.aspx.designer.cs">
+      <DependentUpon>34_Token-Compra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="35_deletefromcart.aspx.cs">
+      <DependentUpon>35_deletefromcart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="35_deletefromcart.aspx.designer.cs">
+      <DependentUpon>35_deletefromcart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="35_ES_deletefromcart.aspx.cs">
+      <DependentUpon>35_ES_deletefromcart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="35_ES_deletefromcart.aspx.designer.cs">
+      <DependentUpon>35_ES_deletefromcart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="36_complete.aspx.cs">
+      <DependentUpon>36_complete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="36_complete.aspx.designer.cs">
+      <DependentUpon>36_complete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="36_ES_complete.aspx.cs">
+      <DependentUpon>36_ES_complete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="36_ES_complete.aspx.designer.cs">
+      <DependentUpon>36_ES_complete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="37_ES_Sellers.aspx.cs">
+      <DependentUpon>37_ES_Sellers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="37_ES_Sellers.aspx.designer.cs">
+      <DependentUpon>37_ES_Sellers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="37_Sellers.aspx.cs">
+      <DependentUpon>37_Sellers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="37_Sellers.aspx.designer.cs">
+      <DependentUpon>37_Sellers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="38_ES_seller_create.aspx.cs">
+      <DependentUpon>38_ES_seller_create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="38_ES_seller_create.aspx.designer.cs">
+      <DependentUpon>38_ES_seller_create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="38_seller_create.aspx.cs">
+      <DependentUpon>38_seller_create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="38_seller_create.aspx.designer.cs">
+      <DependentUpon>38_seller_create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="39_ES_Sales_register.aspx.cs">
+      <DependentUpon>39_ES_Sales_register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="39_ES_Sales_register.aspx.designer.cs">
+      <DependentUpon>39_ES_Sales_register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="39_Sales_register.aspx.cs">
+      <DependentUpon>39_Sales_register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="39_Sales_register.aspx.designer.cs">
+      <DependentUpon>39_Sales_register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="40_Create_Seller.aspx.cs">
+      <DependentUpon>40_Create_Seller.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="40_Create_Seller.aspx.designer.cs">
+      <DependentUpon>40_Create_Seller.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="40_ES_Create_Seller.aspx.cs">
+      <DependentUpon>40_ES_Create_Seller.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="40_ES_Create_Seller.aspx.designer.cs">
+      <DependentUpon>40_ES_Create_Seller.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="41_customize_clothes.aspx.cs">
+      <DependentUpon>41_customize_clothes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="41_customize_clothes.aspx.designer.cs">
+      <DependentUpon>41_customize_clothes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="41_ES_customize_clothes.aspx.cs">
+      <DependentUpon>41_ES_customize_clothes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="41_ES_customize_clothes.aspx.designer.cs">
+      <DependentUpon>41_ES_customize_clothes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="42_customize_technology.aspx.cs">
+      <DependentUpon>42_customize_technology.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="42_customize_technology.aspx.designer.cs">
+      <DependentUpon>42_customize_technology.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="42_ES_customize_technology.aspx.cs">
+      <DependentUpon>42_ES_customize_technology.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="42_ES_customize_technology.aspx.designer.cs">
+      <DependentUpon>42_ES_customize_technology.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="43_customize_accesories.aspx.cs">
+      <DependentUpon>43_customize_accesories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="43_customize_accesories.aspx.designer.cs">
+      <DependentUpon>43_customize_accesories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="43_ES_customize_accesories.aspx.cs">
+      <DependentUpon>43_ES_customize_accesories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="43_ES_customize_accesories.aspx.designer.cs">
+      <DependentUpon>43_ES_customize_accesories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Add.cs" />
+    <Compile Include="CartItem.cs" />
+    <Compile Include="conexion.cs" />
+    <Compile Include="conexion1.cs" />
+    <Compile Include="CustomizeDetail.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default_Spanish.aspx.cs">
+      <DependentUpon>Default_Spanish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default_Spanish.aspx.designer.cs">
+      <DependentUpon>Default_Spanish.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="metodos.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValorGlobalOlvidoContra.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\fonts\flaming\flaming-webfont.woff" />
+    <Content Include="assets\fonts\flaming\flaming-webfont.woff2" />
+    <Content Include="assets\fonts\icon51c1.eot" />
+    <Content Include="assets\fonts\icon51c1.ttf" />
+    <Content Include="assets\fonts\icon51c1.woff" />
+    <Content Include="assets\fonts\icon51c1.woff2" />
+    <Content Include="assets\fonts\molla0ab2.eot" />
+    <Content Include="assets\fonts\molla0ab2.ttf" />
+    <Content Include="assets\fonts\molla0ab2.woff" />
+    <Content Include="assets\fonts\molla0ab2.woff2" />
+    <Content Include="assets\vendor\line-awesome\line-awesome\line-awesome\fonts\line-awesome0176.eot" />
+    <Content Include="assets\vendor\line-awesome\line-awesome\line-awesome\fonts\line-awesomeeb4f.eot" />
+    <Content Include="assets\vendor\line-awesome\line-awesome\line-awesome\fonts\line-awesomeeb4f.ttf" />
+    <Content Include="assets\vendor\line-awesome\line-awesome\line-awesome\fonts\line-awesomeeb4f.woff" />
+    <Content Include="assets\vendor\line-awesome\line-awesome\line-awesome\fonts\line-awesomeeb4f.woff2" />
+    <Content Include="img\elements\_DS_Store" />
+    <Content Include="CA\assets\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="CA\assets\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="CA\assets\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="CA\assets\vendor\fonts\boxicons\boxicons.woff2" />
+    <Content Include="css\style.map" />
+    <Content Include="fonts\Flaticon.eot" />
+    <Content Include="fonts\Flaticon.ttf" />
+    <Content Include="fonts\Flaticon.woff" />
+    <Content Include="fonts\Flaticon.woff2" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\themify.eot" />
+    <Content Include="fonts\themify.ttf" />
+    <Content Include="fonts\themify.woff" />
+    <Content Include="js\bootstrap.bundle.js.map" />
+    <Content Include="js\bootstrap.bundle.min.js.map" />
+    <Content Include="libs\apex-charts\apex-charts.scss" />
+    <Content Include="libs\highlight\highlight-github.scss" />
+    <Content Include="libs\highlight\highlight.scss" />
+    <Content Include="libs\perfect-scrollbar\perfect-scrollbar.scss" />
+    <Content Include="img\Taza-Mainstays-Variedad-Tonos-De-12oz-2-15552.webp" />
+    <None Include="packages.config" />
+    <Content Include="sass\style.scss" />
+    <Content Include="sass\_about_us.scss" />
+    <Content Include="sass\_banner.scss" />
+    <Content Include="sass\_best_seller.scss" />
+    <Content Include="sass\_blog.scss" />
+    <Content Include="sass\_blog_part.scss" />
+    <Content Include="sass\_breadcrumb.scss" />
+    <Content Include="sass\_button.scss" />
+    <Content Include="sass\_client_logo.scss" />
+    <Content Include="sass\_client_review.scss" />
+    <Content Include="sass\_common.scss" />
+    <Content Include="sass\_confirmation_part.scss" />
+    <Content Include="sass\_contact.scss" />
+    <Content Include="sass\_copyright_part.scss" />
+    <Content Include="sass\_cource_details.scss" />
+    <Content Include="sass\_cta_part.scss" />
+    <Content Include="sass\_elements.scss" />
+    <Content Include="sass\_extends.scss" />
+    <Content Include="sass\_feature_part.scss" />
+    <Content Include="sass\_footer.scss" />
+    <Content Include="sass\_instagram_photo.scss" />
+    <Content Include="sass\_menu.scss" />
+    <Content Include="sass\_mixins.scss" />
+    <Content Include="sass\_new_arrival.scss" />
+    <Content Include="sass\_our_offer.scss" />
+    <Content Include="sass\_product.scss" />
+    <Content Include="sass\_product_list.scss" />
+    <Content Include="sass\_review.scss" />
+    <Content Include="sass\_shipping_details.scss" />
+    <Content Include="sass\_single_blog.scss" />
+    <Content Include="sass\_single_product.scss" />
+    <Content Include="sass\_special_cource.scss" />
+    <Content Include="sass\_subscribe_part.scss" />
+    <Content Include="sass\_trending_items.scss" />
+    <Content Include="sass\_variables.scss" />
+    <Content Include="scss\core.scss" />
+    <Content Include="scss\pages\page-account-settings.scss" />
+    <Content Include="scss\pages\page-auth.scss" />
+    <Content Include="scss\pages\page-icons.scss" />
+    <Content Include="scss\pages\page-misc.scss" />
+    <Content Include="scss\theme-default.scss" />
+    <Content Include="scss\_bootstrap-extended.scss" />
+    <Content Include="scss\_bootstrap-extended\forms\_floating-labels.scss" />
+    <Content Include="scss\_bootstrap-extended\forms\_form-control.scss" />
+    <Content Include="scss\_bootstrap-extended\forms\_form-range.scss" />
+    <Content Include="scss\_bootstrap-extended\forms\_form-select.scss" />
+    <Content Include="scss\_bootstrap-extended\forms\_input-group.scss" />
+    <Content Include="scss\_bootstrap-extended\forms\_labels.scss" />
+    <Content Include="scss\_bootstrap-extended\forms\_validation.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_alert.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_badge.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_buttons.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_caret.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_dropdown.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_forms.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_list-group.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_misc.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_navs.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_pagination.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_progress.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_table-variants.scss" />
+    <Content Include="scss\_bootstrap-extended\mixins\_toasts.scss" />
+    <Content Include="scss\_bootstrap-extended\_accordion.scss" />
+    <Content Include="scss\_bootstrap-extended\_alert.scss" />
+    <Content Include="scss\_bootstrap-extended\_badge.scss" />
+    <Content Include="scss\_bootstrap-extended\_breadcrumb.scss" />
+    <Content Include="scss\_bootstrap-extended\_button-group.scss" />
+    <Content Include="scss\_bootstrap-extended\_buttons.scss" />
+    <Content Include="scss\_bootstrap-extended\_card.scss" />
+    <Content Include="scss\_bootstrap-extended\_carousel.scss" />
+    <Content Include="scss\_bootstrap-extended\_close.scss" />
+    <Content Include="scss\_bootstrap-extended\_dropdown.scss" />
+    <Content Include="scss\_bootstrap-extended\_forms.scss" />
+    <Content Include="scss\_bootstrap-extended\_functions.scss" />
+    <Content Include="scss\_bootstrap-extended\_include.scss" />
+    <Content Include="scss\_bootstrap-extended\_list-group.scss" />
+    <Content Include="scss\_bootstrap-extended\_mixins.scss" />
+    <Content Include="scss\_bootstrap-extended\_modal.scss" />
+    <Content Include="scss\_bootstrap-extended\_nav.scss" />
+    <Content Include="scss\_bootstrap-extended\_navbar.scss" />
+    <Content Include="scss\_bootstrap-extended\_offcanvas.scss" />
+    <Content Include="scss\_bootstrap-extended\_pagination.scss" />
+    <Content Include="scss\_bootstrap-extended\_popover.scss" />
+    <Content Include="scss\_bootstrap-extended\_progress.scss" />
+    <Content Include="scss\_bootstrap-extended\_reboot.scss" />
+    <Content Include="scss\_bootstrap-extended\_root.scss" />
+    <Content Include="scss\_bootstrap-extended\_spinners.scss" />
+    <Content Include="scss\_bootstrap-extended\_tables.scss" />
+    <Content Include="scss\_bootstrap-extended\_toasts.scss" />
+    <Content Include="scss\_bootstrap-extended\_tooltip.scss" />
+    <Content Include="scss\_bootstrap-extended\_type.scss" />
+    <Content Include="scss\_bootstrap-extended\_utilities-ltr.scss" />
+    <Content Include="scss\_bootstrap-extended\_utilities.scss" />
+    <Content Include="scss\_bootstrap-extended\_variables.scss" />
+    <Content Include="scss\_bootstrap.scss" />
+    <Content Include="scss\_colors.scss" />
+    <Content Include="scss\_components.scss" />
+    <Content Include="scss\_components\mixins\_app-brand.scss" />
+    <Content Include="scss\_components\mixins\_avatar.scss" />
+    <Content Include="scss\_components\mixins\_footer.scss" />
+    <Content Include="scss\_components\mixins\_menu.scss" />
+    <Content Include="scss\_components\mixins\_misc.scss" />
+    <Content Include="scss\_components\mixins\_navbar.scss" />
+    <Content Include="scss\_components\mixins\_text-divider.scss" />
+    <Content Include="scss\_components\_app-brand.scss" />
+    <Content Include="scss\_components\_avatar.scss" />
+    <Content Include="scss\_components\_base.scss" />
+    <Content Include="scss\_components\_common.scss" />
+    <Content Include="scss\_components\_footer.scss" />
+    <Content Include="scss\_components\_include.scss" />
+    <Content Include="scss\_components\_layout.scss" />
+    <Content Include="scss\_components\_menu.scss" />
+    <Content Include="scss\_components\_mixins.scss" />
+    <Content Include="scss\_components\_text-divider.scss" />
+    <Content Include="scss\_components\_variables.scss" />
+    <Content Include="scss\_custom-variables\_bootstrap-extended.scss" />
+    <Content Include="scss\_custom-variables\_components.scss" />
+    <Content Include="scss\_custom-variables\_libs.scss" />
+    <Content Include="scss\_custom-variables\_pages.scss" />
+    <Content Include="scss\_custom-variables\_support.scss" />
+    <Content Include="scss\_theme\_common.scss" />
+    <Content Include="scss\_theme\_theme.scss" />
+    <Content Include="shop_doc\fonts\fontawesome-webfont.eot" />
+    <Content Include="shop_doc\fonts\fontawesome-webfont.ttf" />
+    <Content Include="shop_doc\fonts\fontawesome-webfont.woff" />
+    <Content Include="shop_doc\fonts\FontAwesome.otf" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="popup\assets\images\demos\demo-6\products\" />
+    <Folder Include="popup\assets\images\popup\quickView\" />
+    <Folder Include="popup\popup\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51869</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44364/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
